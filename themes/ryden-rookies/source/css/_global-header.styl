@@ -1,0 +1,41 @@
+.global-header
+  @extend $container
+
+  display flex
+  align-items center
+  margin-top 1.5rem
+  margin-bottom 1.5rem
+
+.logo
+  flex-grow 1
+  margin-top 0
+  margin-bottom 0
+  font-size font-size-default
+  line-height 1
+
+  a
+    color inherit
+    text-decoration none
+
+.site-navigation
+  font-size font-size-small
+  line-height 1
+
+  ul
+    display flex
+    margin-top 0
+    margin-bottom 0
+    padding-left 0
+    list-style-type none
+
+  li
+    margin-left 1.2em
+    text-align right
+    white-space nowrap
+
+  a
+    color color-dark
+    text-decoration none
+
+    &:hover
+      text-decoration underline

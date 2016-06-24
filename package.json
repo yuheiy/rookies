@@ -1,0 +1,35 @@
+{
+  "name": "rookies-blog",
+  "version": "0.0.1",
+  "author": "Yuhei Yasuda <yuhei@ryden.co.jp>",
+  "bugs": {
+    "url": "https://github.com/ryden-inc/rookies/issues"
+  },
+  "dependencies": {
+    "hexo": "^3.2.0",
+    "hexo-deployer-git": "^0.2.0",
+    "hexo-generator-feed": "^1.1.0",
+    "hexo-generator-index": "^0.2.0",
+    "hexo-generator-sitemap": "^1.1.2",
+    "hexo-renderer-jade": "^0.3.0",
+    "hexo-renderer-marked": "^0.2.10",
+    "hexo-renderer-stylus": "^0.3.1",
+    "hexo-server": "^0.2.0",
+    "normalize.css": "^4.1.1"
+  },
+  "hexo": {
+    "version": "3.2.0"
+  },
+  "homepage": "https://ryden-inc.github.io/rookies/",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryden-inc/rookies.git"
+  },
+  "scripts": {
+    "build": "hexo generate",
+    "predeploy": "rm -rf .deploy_git && git clone -b gh-pages https://github.com/ryden-inc/rookies.git .deploy_git",
+    "deploy": "hexo deploy"
+  }
+}

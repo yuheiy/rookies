@@ -1,0 +1,11 @@
+header.global-header
+  h1.logo
+    if is_home()
+      = config.title
+    else
+      a(href= config.root)= config.title
+
+  nav.site-navigation
+    ul
+      li
+        != link_to('http://www.ryden.co.jp/', 'RYDEN Inc.', {external: true})

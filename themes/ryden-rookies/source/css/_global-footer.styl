@@ -1,0 +1,28 @@
+.global-footer
+  @extend $container
+
+  margin-top 1.5rem
+  margin-bottom 1.5rem
+  font-size font-size-small
+  line-height 1
+  text-align center
+
+  p
+    display inline-block
+    margin-top 0
+    margin-bottom 0
+
+  ul
+    display inline-block
+    margin-top 0
+    margin-bottom 0
+    padding-left 0
+    list-style none
+
+  li
+    display inline-block
+
+    &::before
+      content "・"
+      color color-dark
+      opacity .5

@@ -1,0 +1,52 @@
+.profile
+  display flex
+  flex-direction column
+  margin-top 1rem
+  margin-bottom 6rem
+
+  @media (min-width: 30rem)
+    flex-direction row
+    align-items center
+
+  &__author
+    min-width 6rem
+    text-align center
+
+    img
+      vertical-align middle
+      border-radius 50%
+
+  &__detail
+    display flex
+    flex-direction column
+
+    @media (min-width: 30rem)
+      margin-left 1.6rem
+
+    @media (min-width: 42rem)
+      margin-left 2rem
+
+  &__name
+  &__title
+    text-align center
+
+    @media (min-width: 30rem)
+      text-align left
+
+  &__name
+    margin-top 0
+    margin-bottom 0
+    font-weight bold
+
+  &__title
+    order -1
+    margin-bottom 0
+    font-size font-size-small
+
+    @media (min-width: 30rem)
+      margin-top 0
+
+  &__text
+    margin-top .5em
+    margin-bottom 0
+    font-size font-size-small

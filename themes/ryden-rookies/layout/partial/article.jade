@@ -1,0 +1,45 @@
+mixin article-inner
+  unless is_post()
+    p.post-author
+      img(src="#{url_for('images/' + author.image)}", alt="")
+      = author.name_ja
+
+  header.post-header(class= is_post() ? '' : 'is-archive')
+    h1= post.title
+    time(datetime= date_xml(post.date))= date(post.date, date_format)
+
+  if is_post()
+    .profile
+      .profile__author
+        img(src="#{url_for('images/' + author.image)}", width="96", height="96" alt="")
+      .profile__detail
+        p.profile__name= author.name_ja
+        p.profile__title= author.title
+        p.profile__text= author.description
+
+  .post-content
+    != is_post() ? post.content : post.excerpt
+
+  if is_post()
+    footer.post-footer
+      address
+        p
+          | Written by 
+          = author.name_en
+          | .
+
+    aside
+      ul.share-buttons
+        li.
+          <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        li
+          .fb-share-button(data-href= url, data-layout="button")
+
+- var author = site.data.authors[post.author];
+
+article.post
+  if is_post()
+    +article-inner
+  else
+    a.post-link(href= url_for(post.path))
+      +article-inner
