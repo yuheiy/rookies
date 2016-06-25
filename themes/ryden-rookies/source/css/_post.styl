@@ -89,16 +89,15 @@
     &::before
       content "→"
       position absolute
-      left -3em
+      right calc(100% + (3rem / 2))
       bottom 50%
-      transform translateY(50%)
+      transform translate(50%,50%)
       opacity 0
-      transition transform .3s, opacity .3s
+      transition opacity .3s
       pointer-events none
 
   &:hover
     .post-header h1::before
-      transform translate(1em,50%)
       opacity 1
 
 .share-buttons
