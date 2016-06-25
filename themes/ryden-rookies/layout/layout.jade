@@ -1,9 +1,5 @@
--
-  var title = is_post() ? `${page.title} - ${config.title}` : config.title;
-  var description = is_post()
-    ? strip_html(page.excerpt).substr(0, 160)
-    : config.description;
--
+- var title = is_post() ? `${page.title} - ${config.title}` : config.title;
+- var description = (is_post() ? strip_html(page.excerpt) : config.description).substr(0, 160);
 
 doctype html
 html(lang="ja")
@@ -14,7 +10,7 @@ html(lang="ja")
     meta(name="description", content= description)
     meta(property="og:title", content= is_post() ? page.title : config.title)
     meta(property="og:type", content= is_post() ? 'article' : 'website')
-    meta(property="og:image", content= config.url + '/images/ogp.png')
+    meta(property="og:image", content="#{config.url}/images/ogp.png")
     meta(property="og:url", content= url.replace(/\/index\.html$/, '/'))
     meta(property="og:description", content= description)
     meta(property="og:locale", content="ja_JP")
@@ -23,7 +19,7 @@ html(lang="ja")
 
     != feed_tag('atom.xml')
     != css('css/style.css')
-    //- link(rel="icon", href= url_for('favicon.ico'))
+    //- link(rel="icon", href= url_for('favicon.ico'), type="image/x-icon")
     script(src= url_for('js/fixbug.js'), async)
 
   body
