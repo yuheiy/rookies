@@ -17,6 +17,7 @@ html(lang="ja")
     meta(property="og:site_name", content= config.title)
     meta(property="twitter:card", content="summary")
 
+    link(rel="canonical", href= url_for(page.path).replace(/\/index\.html$/, '/'))
     != feed_tag('atom.xml')
     != css('css/style.css')
     //- link(rel="icon", href= url_for('favicon.ico'), type="image/x-icon")
