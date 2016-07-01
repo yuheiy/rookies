@@ -13,6 +13,7 @@ permalink: posts/:title.html
 # Directory
 skip_render:
   - circle.yml
+  - demos/**/*
 
 # Date / Time format
 date_format: MMM D, YYYY
