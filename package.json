@@ -6,16 +6,16 @@
     "url": "https://github.com/ryden-inc/rookies/issues"
   },
   "dependencies": {
-    "hexo": "^3.2.0",
+    "hexo": "^3.2.2",
     "hexo-deployer-git": "^0.2.0",
     "hexo-generator-feed": "^1.1.0",
     "hexo-generator-index": "^0.2.0",
     "hexo-generator-sitemap": "^1.1.2",
     "hexo-renderer-jade": "^0.3.0",
-    "hexo-renderer-marked": "^0.2.10",
+    "hexo-renderer-marked": "^0.2.11",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
-    "normalize.css": "^4.1.1"
+    "normalize.css": "^4.2.0"
   },
   "hexo": {
     "version": "3.2.0"
