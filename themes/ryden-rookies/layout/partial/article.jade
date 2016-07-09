@@ -9,7 +9,7 @@ mixin article-inner
     time(datetime= date_xml(post.date))= date(post.date, date_format)
 
   if is_post()
-    .profile
+    aside.profile
       .profile__author
         img(src= url_for(`images/${author.image}`), width="96", height="96", alt="")
       .profile__detail
