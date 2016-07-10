@@ -12,7 +12,7 @@
   var redrawStyle = function () {
     var styleSheet = document.styleSheets[0];
     var rule = 'body::before { display: none !important; }';
-    var index = 0;
+    var index = styleSheet.cssRules.length;
 
     styleSheet.insertRule(rule, index);
     setTimeout(styleSheet.deleteRule.bind(styleSheet, index), 0);
