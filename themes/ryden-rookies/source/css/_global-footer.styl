@@ -5,22 +5,21 @@
   font-size font-size-small
   text-align center
 
-  p
+  p,
+  ul,
+  li
     display inline-block
+
+  p,
+  ul
     margin-top 0
     margin-bottom 0
 
   ul
-    display inline-block
-    margin-top 0
-    margin-bottom 0
     padding-left 0
     list-style none
 
-  li
-    display inline-block
-
-    &::before
-      content "・"
-      color color-dark
-      opacity .5
+  li::before
+    content "・"
+    color color-dark
+    opacity .5
