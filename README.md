@@ -64,7 +64,7 @@
 1. `image-file-name.ext` の部分を、挿入するファイル名に変更する。
 1. `Commit Changes` をクリックしてしばらくすると、記事が更新される。
 
-### その他
+## その他
 
 - 画像以外にいろいろ記事に入れるタグ  
   [Tag Plugins | Hexo](https://hexo.io/docs/tag-plugins.html)
@@ -74,9 +74,3 @@
   [Markdown Live Preview](http://markdownlivepreview.com/)
 - 記事の下書きはGistにSecretで保存するとよさそう  
   [Create a new Gist](https://gist.github.com/)
-
-## Todos
-
-- favicon
-- link to prev, next entry
-- design for large screen
