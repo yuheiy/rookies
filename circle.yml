@@ -2,16 +2,13 @@ general:
   branches:
     only:
       - master
-
 machine:
   timezone: Asia/Tokyo
   node:
     version: 6
-
 test:
   override:
-    - npm run build
-
+    - exit 0
 deployment:
   publish:
     branch: master
