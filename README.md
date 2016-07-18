@@ -27,8 +27,12 @@
   続きのテキスト
   ```
 
-  - dateに入力する値は、以下のブックマークレットで生成できる。以下のリンクをブックマークすることで利用できる。  
-    [date format 生成用ブックマークレット](javascript:{let zero = n => `0${n}`.slice(-2);let date = new Date();let year = date.getFullYear();let month = zero(date.getMonth() + 1);let day = zero(date.getDate());let hours = zero(date.getHours());let minutes = zero(date.getMinutes());let seconds = zero(date.getSeconds());alert(`${year}/${month}/${day} ${hours}:${minutes}:${seconds}`);})
+  - dateに入力する値は、以下のブックマークレットで生成できる。以下のコードをブックマークすることで利用できる。  
+
+    ```js
+    javascript:{let zero = n => `0${n}`.slice(-2);let date = new Date();let year = date.getFullYear();let month = zero(date.getMonth() + 1);let day = zero(date.getDate());let hours = zero(date.getHours());let minutes = zero(date.getMinutes());let seconds = zero(date.getSeconds());alert(`${year}/${month}/${day} ${hours}:${minutes}:${seconds}`);}
+    ```
+
   - authorに入る値は以下のいずれかとなる。
     - maika
     - yuhei
