@@ -27,8 +27,8 @@
   続きのテキスト
   ```
 
-  - dateに入力する値は、以下のブックマークレットで生成できる。  
-    [date format 生成用ブックマークレット](https://gist.github.com/yuheiy/6e47f70d2d7393ace1900d1dee0bbf63)
+  - dateに入力する値は、以下のブックマークレットで生成できる。以下のリンクをブックマークすることで利用できる。  
+    [date format 生成用ブックマークレット](javascript:{let zero = n => `0${n}`.slice(-2);let date = new Date();let year = date.getFullYear();let month = zero(date.getMonth() + 1);let day = zero(date.getDate());let hours = zero(date.getHours());let minutes = zero(date.getMinutes());let seconds = zero(date.getSeconds());alert(`${year}/${month}/${day} ${hours}:${minutes}:${seconds}`);})
   - authorに入る値は以下のいずれかとなる。
     - maika
     - yuhei
