@@ -6,6 +6,7 @@
     "url": "https://github.com/ryden-inc/rookies/issues"
   },
   "dependencies": {
+    "cheerio": "^0.20.0",
     "hexo": "^3.2.2",
     "hexo-deployer-git": "^0.2.0",
     "hexo-generator-feed": "^1.1.0",
