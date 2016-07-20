@@ -3,6 +3,15 @@ const cheerio = require('cheerio');
 
 hexo.extend.filter.register('template_locals', (locals) => {
   if (locals.page.__post) {
+    const {authors} = hexo.locals.toObject().data;
+    const author = authors[locals.page.author];
+    locals.page.author = author;
+  }
+  return locals;
+});
+
+hexo.extend.filter.register('template_locals', (locals) => {
+  if (locals.page.__post) {
     const $ = cheerio.load(locals.page.content);
     const image = $('img').attr('src');
     locals.page.coverImage = image;

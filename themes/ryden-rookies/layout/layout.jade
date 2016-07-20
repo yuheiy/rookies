@@ -1,7 +1,6 @@
 - var title = is_post() ? `${page.title} - ${config.title}` : config.title;
 - var description = (is_post() ? strip_html(page.excerpt) : config.description).substr(0, 160);
-- var author = site.data.authors[page.author];
-- var ogImage = is_post() ? (page.coverImage || `${config.url}/images/${author.image}`) : `${config.url}/images/ogp.png`;
+- var ogImage = is_post() ? (page.coverImage || `${config.url}/images/${page.author.image}`) : `${config.url}/images/ogp.png`;
 
 doctype html
 html(lang="ja")
