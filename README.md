@@ -8,7 +8,7 @@
 
 ### 新規記事投稿
 
-1. ディレクトリを `rookies/source/_posts/` まで移動する。
+1. ディレクトリを [`/source/_posts/`](/source/_posts/) まで移動する。
 1. `Create new file` をクリック。
 1. ファイル名を `article-title-like-this.md` のフォーマットで入力する。
 1. 以下のフォーマットに則って、テキストエリアにマークダウン記法で記事を書く。
@@ -43,7 +43,7 @@
 
 ### 既存記事編集
 
-1. ディレクトリを `rookies/source/_posts/` まで移動する。
+1. ディレクトリを [`/source/_posts/`](/source/_posts/) まで移動する。
 1. 編集する記事を開く。
 1. `Edit this file` をクリック。
 1. 記事の内容を編集する。
@@ -51,7 +51,7 @@
 
 ### 画像アップロード
 
-1. ディレクトリを `rookies/source/images/post/` まで移動する。
+1. ディレクトリを [`/source/images/post/`](/source/images/post/) まで移動する。
 1. `Upload files` をクリック。
 1. アップロードする画像を選択。
 1. `Commit Changes` をクリックしてしばらくすると、画像がアップロードされる。
@@ -78,11 +78,11 @@
 
 ## その他
 
-- 画像以外にいろいろ記事に入れるタグ  
-  [Tag Plugins | Hexo](https://hexo.io/docs/tag-plugins.html)
 - Markdown記法の書き方  
   [文章作成やメモ書きにも便利、Markdown記法｜Web Design KOJIKA17](http://kojika17.com/2013/01/starting-markdown.html)
 - Markdownのライブプレビュー  
   [Markdown Live Preview](http://markdownlivepreview.com/)
+- 画像以外にいろいろ記事に入れるタグ  
+  [Tag Plugins | Hexo](https://hexo.io/docs/tag-plugins.html)
 - 記事の下書きはGistにSecretで保存するとよさそう  
   [Create a new Gist](https://gist.github.com/)
