@@ -35,6 +35,15 @@ mixin article-inner
         li
           .fb-share-button(data-href= url, data-layout="button")
 
+    aside
+      ul.post-pagination
+        if post.next
+          li.post-pagination__prev
+            a(href= url_for(post.next.path))= post.next.title
+        if post.prev
+          li.post-pagination__next
+            a(href= url_for(post.prev.path))= post.prev.title
+
 article.post
   if is_post()
     +article-inner

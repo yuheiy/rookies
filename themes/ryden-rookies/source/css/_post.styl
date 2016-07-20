@@ -132,3 +132,63 @@
 
 .fb-share-button
   top -.45rem
+
+.post-pagination
+  display flex
+  flex-direction column-reverse
+  margin-top 6rem
+  padding-left 0
+  list-style none
+
+  @media (min-width: 42rem)
+    flex-direction row
+    font-size font-size-small
+
+  li
+    @media (min-width: 42rem)
+      position relative
+      display flex
+      align-items center
+      flex-basis 50%
+
+    &:not(:last-child)
+      margin-top 1rem
+
+      @media (min-width: 42rem)
+        margin-top 0
+
+    &::before
+      display block
+
+      @media (min-width: 42rem)
+        display inline
+        position absolute
+        bottom 50%
+        transform translateY(50%)
+
+  &__next
+    @media (min-width: 42rem)
+      justify-content flex-end
+      margin-left auto
+      padding-left .5rem
+      padding-right 1.5em
+      text-align right
+
+    &::before
+      content "次の記事"
+
+      @media (min-width: 42rem)
+        content ">"
+        right 0
+
+  &__prev
+    @media (min-width: 42rem)
+      padding-left 1.5em
+      padding-right .5rem
+
+    &::before
+      content "前の記事"
+
+      @media (min-width: 42rem)
+        content "<"
+        left 0
