@@ -4,10 +4,10 @@ date: 2016/07/22 18:10:12
 updated: 2016/07/22 18:10:12
 author: maika
 ---
-7月が、もう半分以上封を<span style="color: maron;">開けて</span>ゆき、  
-すっかり夏、夜もすぐに<span style="color: maron;">明けて</span>ゆく。   
-この季節は<span style="color: maron;">飽き</span>がこないが、  
-そうしているうちに<span style="color: maron;">秋</span>はくる。  
+7月が、もう半分以上封を<span style="color: maroon;">開けて</span>ゆき、  
+すっかり夏、夜もすぐに<span style="color: maroon;">明けて</span>ゆく。   
+この季節は<span style="color: maroon;">飽き</span>がこないが、  
+そうしているうちに<span style="color: maroon;">秋</span>はくる。  
 
 北海道には四季があってないようなものなので、
 東京で暮らし、「初夏」を五感で捉えることができてしあわせです。
