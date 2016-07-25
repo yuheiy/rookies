@@ -1,4 +1,4 @@
-// chrome 51で擬似要素のcontentで指定した画像が表示されないので再描画させる
+// chrome 51-52 で擬似要素のcontentで指定した画像が表示されないので再描画させる
 (function () {
   'use strict';
 
