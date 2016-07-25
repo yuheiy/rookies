@@ -21,7 +21,7 @@ html(lang="ja")
     link(rel="canonical", href= url_for(page.path).replace(/\/index\.html$/, '/'))
     != feed_tag('atom.xml')
     != css('css/style.css')
-    //- link(rel="icon", href= url_for('favicon.ico'), type="image/x-icon")
+    //- link(rel="icon", href= url_for('favicon.ico'))
     script(src= url_for('js/fixbug.js'), async)
     script.
       if (location.hostname === 'ryden-inc.github.io') {
