@@ -1,6 +1,7 @@
 'use strict';
 const cheerio = require('cheerio');
 
+// author data
 hexo.extend.filter.register('template_locals', (locals) => {
   if (locals.page.__post) {
     const {authors} = hexo.locals.toObject().data;
@@ -10,6 +11,7 @@ hexo.extend.filter.register('template_locals', (locals) => {
   return locals;
 });
 
+// ogp image
 hexo.extend.filter.register('template_locals', (locals) => {
   if (locals.page.__post) {
     const $ = cheerio.load(locals.page.content);
