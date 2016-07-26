@@ -13,8 +13,15 @@ hexo.extend.filter.register('template_locals', (locals) => {
 hexo.extend.filter.register('template_locals', (locals) => {
   if (locals.page.__post) {
     const $ = cheerio.load(locals.page.content);
-    const image = $('img').attr('src');
-    locals.page.coverImage = image;
+    const $firstImage = $('img').first();
+    const src = $firstImage.attr('src');
+
+    if (src) {
+      const url = /^https?:\/\//.test(src)
+        ? src
+        : locals.config.url + src.replace(locals.config.root, '/');
+      locals.page.coverImage = url;
+    }
   }
   return locals;
 });
