@@ -13,8 +13,6 @@ html(lang="ja")
     style.
       .page {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         max-width: 40rem;
         min-height: calc(100vh - (4rem + (1rem * 2) + 3.8rem));
         margin-left: auto;
@@ -22,8 +20,8 @@ html(lang="ja")
         padding: 1rem;
         text-align: center;
       }
-      .page > *:not(:first-child) {
-        margin-top: 0;
+      .page-inner {
+        margin: auto;
       }
     //- link(rel="icon", href= `${root}favicon.ico`)
     script(src= `${root}js/fixbug.js`, async)
@@ -38,9 +36,10 @@ html(lang="ja")
           li
             a(href="http://www.ryden.co.jp/", target="_blank")= company
 
-    section.page
-      h1= errorMessage
-      p あなたがお探しのページは見つかりませんでした。
+    main.page
+      section.page-inner
+        h1= errorMessage
+        p あなたがお探しのページは見つかりませんでした。
 
     footer.global-footer
       p= company
