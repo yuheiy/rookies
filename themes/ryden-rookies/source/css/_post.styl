@@ -158,13 +158,16 @@
         margin-top 0
 
     &::before
-      display block
+      font-size font-size-small
+      white-space pre
 
       @media (min-width: 42rem)
         display inline
         position absolute
         bottom 50%
         transform translateY(50%)
+        font-size inherit
+        white-space normal
 
   &__next
     @media (min-width: 42rem)
@@ -175,7 +178,7 @@
       text-align right
 
     &::before
-      content "次の記事"
+      content "次の記事\A"
 
       @media (min-width: 42rem)
         content ">"
@@ -187,7 +190,7 @@
       padding-right .5rem
 
     &::before
-      content "前の記事"
+      content "前の記事\A"
 
       @media (min-width: 42rem)
         content "<"
