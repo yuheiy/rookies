@@ -53,28 +53,46 @@
 
 1. ディレクトリを [`/source/images/post/`](/source/images/post/) まで移動する。
 1. `Upload files` をクリック。
-1. アップロードする画像を選択。  
-画像幅は `1280px` が推奨。ウィンドウ幅いっぱいの画像は `3840px`。
+1. アップロードする画像を選択。
 1. `Commit Changes` をクリックしてしばらくすると、画像がアップロードされる。
 
 ### 記事中へ画像の挿入
 
 1. 画像を挿入する記事を開く。
-1. 以下のタグを挿入する。
-
-  ```
-  {% img /images/post/image-file-name.ext %}
-  ```
-
+1. [画像のスタイル](#画像のスタイル)から利用するスタイルに応じたコードを挿入する。
 1. `image-file-name.ext` の部分を、挿入するファイル名に変更する。
 1. `Commit Changes` をクリックしてしばらくすると、記事が更新される。
 
+### 画像のスタイル
+
+#### 普通の画像
+
+```html
+<figure>{% img /images/post/image-file-name.ext %}</figure>
+```
+
+#### 大きい画像
+
+```html
+<figure class="large">{% img /images/post/image-file-name.ext %}</figure>
+```
+
+#### 左にはみ出した画像
+
+```html
+<figure class="drop-left">{% img /images/post/image-file-name.ext %}</figure>
+```
+
+#### 右にはみ出した画像
+
+```html
+<figure class="drop-right">{% img /images/post/image-file-name.ext %}</figure>
+```
+
 #### 画面幅いっぱいの画像
 
-以下のタグを利用すると、ウィンドウの画面幅いっぱいの画像を挿入できる。
-
-```
-{% img fill /images/post/image-file-name.ext %}
+```html
+<figure class="cover">{% img /images/post/image-file-name.ext %}</figure>
 ```
 
 ## その他
