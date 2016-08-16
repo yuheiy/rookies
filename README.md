@@ -51,49 +51,21 @@
 
 ### 画像アップロード
 
-1. ディレクトリを [`/source/images/post/`](/source/images/post/) まで移動する。
-1. `Upload files` をクリック。
+1. ディレクトリを [`/source/_posts/`](/source/images/post/) まで移動する。
+1. 記事の専用のディレクトリを作成する。  
+`Create new file` をクリック  
+ファイル名の欄に `記事の拡張子を除いたファイル名/.gitkeep` と入力  
+`Commit Changes` をクリック
+1. 作成したディレクトリを開いた状態で、 `Upload files` をクリック
 1. アップロードする画像を選択。
 1. `Commit Changes` をクリックしてしばらくすると、画像がアップロードされる。
 
 ### 記事中へ画像の挿入
 
 1. 画像を挿入する記事を開く。
-1. [画像のスタイル](#画像のスタイル)から利用するスタイルに応じたコードを挿入する。
+1. スタイルに応じたコードを挿入する。
 1. `image-file-name.ext` の部分を、挿入するファイル名に変更する。
 1. `Commit Changes` をクリックしてしばらくすると、記事が更新される。
-
-### 画像のスタイル
-
-#### 普通の画像
-
-```html
-<figure>{% img /images/post/image-file-name.ext %}</figure>
-```
-
-#### 大きい画像
-
-```html
-<figure class="large">{% img /images/post/image-file-name.ext %}</figure>
-```
-
-#### 左にはみ出した画像
-
-```html
-<figure class="drop-left">{% img /images/post/image-file-name.ext %}</figure>
-```
-
-#### 右にはみ出した画像
-
-```html
-<figure class="drop-right">{% img /images/post/image-file-name.ext %}</figure>
-```
-
-#### 画面幅いっぱいの画像
-
-```html
-<figure class="cover">{% img /images/post/image-file-name.ext %}</figure>
-```
 
 ## その他
 
