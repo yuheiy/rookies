@@ -51,10 +51,10 @@
 
 ### 画像アップロード
 
-1. ディレクトリを [`/source/_posts/`](/source/images/post/) まで移動する。
+1. ディレクトリを [`/source/images/post/`](/source/images/post/) まで移動する。
 1. 記事の専用のディレクトリを作成する。  
 `Create new file` をクリック  
-ファイル名の欄に `記事の拡張子を除いたファイル名/.gitkeep` と入力  
+ファイル名の欄に `記事の拡張子を除いたファイル名/.gitkeep` と入力（例えば、記事のファイル名が`post-title-like-this.md`なら`post-title-like-this/.gitkeep`）  
 `Commit Changes` をクリック
 1. 作成したディレクトリを開いた状態で、 `Upload files` をクリック
 1. アップロードする画像を選択。
@@ -64,6 +64,7 @@
 
 1. 画像を挿入する記事を開く。
 1. [スタイルガイド](https://ryden-inc.github.io/rookies/posts/styleguide.html)を参考に、必要なコードを挿入する。
+1. `post-slug-name` の部分を、記事の拡張子を覗いたファイル名に変更する。
 1. `image-file-name.ext` の部分を、挿入するファイル名に変更する。
 1. `Commit Changes` をクリックしてしばらくすると、記事が更新される。
 
