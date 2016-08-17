@@ -63,7 +63,7 @@
 ### 記事中へ画像の挿入
 
 1. 画像を挿入する記事を開く。
-1. スタイルに応じたコードを挿入する。
+1. [スタイルガイド](https://ryden-inc.github.io/rookies/posts/styleguide.html)を参考に、必要なコードを挿入する。
 1. `image-file-name.ext` の部分を、挿入するファイル名に変更する。
 1. `Commit Changes` をクリックしてしばらくすると、記事が更新される。
 
