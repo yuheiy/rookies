@@ -15,9 +15,6 @@ skip_render:
   - circle.yml
   - demos/**/*
 
-# Writing
-post_asset_folder: true
-
 # Date / Time format
 date_format: MMM D, YYYY
 
