@@ -18,6 +18,9 @@ skip_render:
 # Date / Time format
 date_format: MMM D, YYYY
 
+# Pagination
+per_page: 0
+
 # Extensions
 theme: ryden-rookies
 stylus:
