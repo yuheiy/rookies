@@ -64,7 +64,7 @@
 
 1. 画像を挿入する記事を開く。
 1. [スタイルガイド](https://ryden-inc.github.io/rookies/posts/styleguide.html)を参考に、必要なコードを挿入する。
-1. `post-slug-name` の部分を、記事の拡張子を覗いたファイル名に変更する。
+1. `post-slug-name` の部分を、記事の拡張子を除いたファイル名に変更する。
 1. `image-file-name.ext` の部分を、挿入するファイル名に変更する。
 1. `Commit Changes` をクリックしてしばらくすると、記事が更新される。
 
