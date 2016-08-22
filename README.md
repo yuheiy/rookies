@@ -51,7 +51,7 @@
 
 ### 画像アップロード
 
-1. ディレクトリを [`/source/images/post/`](/source/images/post/) まで移動する。
+1. ディレクトリを [`/source/img/post/`](/source/img/post/) まで移動する。
 1. 記事の専用のディレクトリを作成する。  
 `Create new file` をクリック  
 ファイル名の欄に `記事の拡張子を除いたファイル名/.gitkeep` と入力（例えば、記事のファイル名が`post-title-like-this.md`なら`post-title-like-this/.gitkeep`）  
