@@ -1,6 +1,6 @@
 - var title = is_post() ? `${page.title} - ${config.title}` : config.title;
 - var description = (is_post() ? strip_html(page.excerpt) : config.description).replace(/\n/g, '').substr(0, 160);
-- var ogImage = is_post() ? (page.coverImage || `${config.url}/images/${page.author.image}`) : `${config.url}/images/ogp.png`;
+- var ogImage = is_post() ? (page.coverImage || `${config.url}/img/${page.author.image}`) : `${config.url}/img/ogp.png`;
 - var card = (is_post() && !page.coverImage) ? 'summary' : 'summary_large_image';
 - var twitterId = is_post() && page.author.twitter;
 

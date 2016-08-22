@@ -1,7 +1,7 @@
 mixin article-inner
   unless is_post()
     p.post-author
-      img(src= url_for(`images/${post.author.image}`), alt="")
+      img(src= url_for(`img/${post.author.image}`), alt="")
       = post.author.name_ja
 
   header.post-header(class= is_post() ? '' : 'is-archive')
@@ -11,7 +11,7 @@ mixin article-inner
   if is_post()
     aside.profile
       .profile__author
-        img(src= url_for(`images/${post.author.image}`), width="96", height="96", alt="")
+        img(src= url_for(`img/${post.author.image}`), width="96", height="96", alt="")
       .profile__detail
         p.profile__name= post.author.name_ja
         p.profile__title= post.author.title

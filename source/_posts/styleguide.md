@@ -26,15 +26,15 @@ author: yuhei
 画像を大きく表示します。  
 小さい画像の場合、引き伸ばして表示されます。
 
-<figure class="large">{% img /images/post/styleguide/building.jpg ニューヨークの高層ビル %}</figure>
+<figure class="large">{% img /img/post/styleguide/building.jpg ニューヨークの高層ビル %}</figure>
 
 ```html
-<figure class="large">{% img /images/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+<figure class="large">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
 ```
 
 ### 左にはみ出した画像
 
-<figure class="drop-left">{% img /images/post/styleguide/noda-red.jpg 野田レッド %}</figure>
+<figure class="drop-left">{% img /img/post/styleguide/noda-red.jpg 野田レッド %}</figure>
 
 ウィンドウ幅が大きい（`960px`以上）場合、画像が左にはみ出して、その右には続くテキストが回りこむようになります。  
 画像のサイズは、最大`480px`、最小`160px`まで伸縮されます。
@@ -45,19 +45,19 @@ author: yuhei
 <div style="clear: both;"></div>
 
 ```html
-<figure class="drop-left">{% img /images/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+<figure class="drop-left">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
 ```
 
 ### 右にはみ出した画像
 
-<figure class="drop-right">{% img /images/post/styleguide/noda-yellow.jpg 野田イエロー %}</figure>
+<figure class="drop-right">{% img /img/post/styleguide/noda-yellow.jpg 野田イエロー %}</figure>
 
 左にはみ出した画像の逆です。
 
 <div style="clear: both;"></div>
 
 ```html
-<figure class="drop-right">{% img /images/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+<figure class="drop-right">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
 ```
 
 ### ウィンドウ幅いっぱいの画像
@@ -67,10 +67,10 @@ author: yuhei
 
 できるだけ横の比率が高い画像を利用してください。
 
-<figure class="cover">{% img /images/post/styleguide/bird.jpg 謎のかっこいい鳥 %}</figure>
+<figure class="cover">{% img /img/post/styleguide/bird.jpg 謎のかっこいい鳥 %}</figure>
 
 ```html
-<figure class="cover">{% img /images/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+<figure class="cover">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
 ```
 
 ### スタイルが施されてない画像
@@ -78,8 +78,8 @@ author: yuhei
 特別なスタイルが施されてない画像です。  
 コンテンツ幅が画像の最大幅になります。
 
-<figure>{% img /images/post/styleguide/building2.jpg なんかかっこいいビル %}</figure>
+<figure>{% img /img/post/styleguide/building2.jpg なんかかっこいいビル %}</figure>
 
 ```html
-<figure>{% img /images/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+<figure>{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
 ```
