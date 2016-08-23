@@ -4,10 +4,10 @@
     "dest_dir": "../../demos/v-shaped-container/"
   },
   "scripts": {
-    "html": "cp src/*.{html,png} ${npm_package_config_dest_dir}",
-    "css": "stylus src/*.styl --sourcemap-inline -o ${npm_package_config_dest_dir}",
+    "stylus": "stylus src/*.styl --sourcemap-inline -o ${npm_package_config_dest_dir}",
+    "copy": "cp src/*.{html,png} ${npm_package_config_dest_dir}",
     "prebuild": "rm -rf ${npm_package_config_dest_dir} && mkdir -p ${npm_package_config_dest_dir}",
-    "build": "npm run html && npm run css"
+    "build": "npm run stylus && npm run copy"
   },
   "devDependencies": {
     "stylus": "^0.54.5"
