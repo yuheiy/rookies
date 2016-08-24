@@ -73,7 +73,7 @@ author: yuhei
 }
 ```
 
-[これが動いているそれです。](http://localhost:4000/rookies/demos/v-shaped-container-next/v-shaped-container-next.html)
+[これが動いているそれです。](/rookies/demos/v-shaped-container-next/v-shaped-container-next.html)
 
 この度はみなさまのお力添えによって、最高の実装をこの手にすることができました。  
 今後とも最高のCSSを書いていくため、引き続きよろしくお願い致します。
