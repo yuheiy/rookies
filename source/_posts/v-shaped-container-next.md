@@ -1,7 +1,7 @@
 ---
 title: CSSでより良いハの字型の背景
-date: 2016/08/24 12:39:48
-updated: 2016/08/24 12:39:48
+date: 2016/08/24 12:47:19
+updated: 2016/08/24 12:47:19
 author: yuhei
 ---
 前回の記事を公開したところ、いくつかのご意見をいただきました。  
@@ -39,7 +39,6 @@ author: yuhei
   &::after {
     content: "";
     display: block;
-    width: 100%;
     height: $gap;
     background-position: center center;
     background-repeat: no-repeat;
