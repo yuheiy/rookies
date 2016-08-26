@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "config": {
+    "destDir": "../../demos/react-sequentially-animation-between-pages/"
+  },
+  "scripts": {
+    "browserify": "NODE_ENV=production browserify -t babelify src/main.js | uglifyjs -c -m > ${npm_package_config_destDir}bundle.js",
+    "copy": "cp src/index.html ${npm_package_config_destDir}",
+    "prebuild": "rm -rf ${npm_package_config_destDir} && mkdir -p ${npm_package_config_destDir}",
+    "build": "npm run browserify && npm run copy",
+    "watchify": "watchify -t babelify src/main.js -o ${npm_package_config_destDir}bundle.js -d -v"
+  },
+  "dependencies": {
+    "dynamics.js": "^1.1.4",
+    "history": "^3.0.0",
+    "promised-reducer": "^0.1.0",
+    "react": "^15.3.1",
+    "react-addons-transition-group": "^15.3.1",
+    "react-dom": "^15.3.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-latest": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "uglify-js": "^2.7.3",
+    "watchify": "^3.7.0"
+  }
+}
