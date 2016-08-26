@@ -1,7 +1,7 @@
 ---
 title: 記事作成のためのスタイルガイド
 date: 2016/08/17 12:42:48
-updated: 2016/08/17 12:42:48
+updated: 2016/08/26 16:59:45
 author: yuhei
 ---
 このブログの記事を作成するためのスタイルガイドを掲載します。
@@ -14,6 +14,7 @@ author: yuhei
   - [大きい画像](#大きい画像)
   - [左にはみ出した画像](#左にはみ出した画像)
   - [右にはみ出した画像](#右にはみ出した画像)
+  - [中央寄せされた画像](#中央寄せされた画像)
   - [ウィンドウ幅いっぱいの画像](#ウィンドウ幅いっぱいの画像)
   - [スタイルが施されてない画像](#スタイルが施されてない画像)
 
@@ -60,6 +61,17 @@ author: yuhei
 <figure class="drop-right">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
 ```
 
+### 中央寄せされた画像
+
+<figure class="centered">{% img /img/post/styleguide/noda-red.jpg 野田レッド %}</figure>
+
+画像を中央寄せして表示します。  
+横幅`960px`以下の画像にのみ使用してください。
+
+```html
+<figure class="centered">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+```
+
 ### ウィンドウ幅いっぱいの画像
 
 ウィンドウの幅いっぱいまで画像が引き伸ばして表示されます。  
@@ -76,7 +88,7 @@ author: yuhei
 ### スタイルが施されてない画像
 
 特別なスタイルが施されてない画像です。  
-コンテンツ幅が画像の最大幅になります。
+上下に最低限のマージンしか設けられておらず、コンテンツ幅が画像の最大幅になります。
 
 <figure>{% img /img/post/styleguide/building2.jpg なんかかっこいいビル %}</figure>
 
