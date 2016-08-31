@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "config": {
+    "destDir": "../../demos/sprite-image-fit-in-content/"
+  },
+  "scripts": {
+    "scss": "node-sass src/ -o ${npm_package_config_destDir} --source-map true --source-map-contents",
+    "copy": "cp src/*.{html,png} ${npm_package_config_destDir}",
+    "prebuild": "rm -rf ${npm_package_config_destDir} && mkdir -p ${npm_package_config_destDir}",
+    "build": "npm run scss && npm run copy"
+  },
+  "devDependencies": {
+    "node-sass": "^3.8.0"
+  }
+}
