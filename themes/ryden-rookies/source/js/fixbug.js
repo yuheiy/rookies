@@ -21,6 +21,6 @@
   if (document.readyState === 'complete') {
     redrawStyle();
   } else {
-    window.addEventListener('load', redrawStyle);
+    window.addEventListener('load', redrawStyle, false);
   }
 })();

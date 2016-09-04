@@ -7,11 +7,14 @@
 
     var clickCount = 0;
     var clickTimeout = null;
-    var onClick = function (event) {
+    var onClick = function () {
+      var context = this;
+      var args = arguments;
+
       if (++clickCount === TRIPLE_CLICK_COUNT) {
+        callback.apply(context, args);
         clearTimeout(clickTimeout);
         clickCount = 0;
-        callback(event);
       } else {
         clickTimeout = setTimeout(function () {
           clickCount = 0;
@@ -37,7 +40,7 @@
     };
     this.windowWidth = window.innerWidth;
     this.windowHeight = window.innerHeight;
-    this.visible = true;
+    this.isVisible = true;
     document.body.appendChild(this.element);
   };
 
@@ -51,11 +54,17 @@
     this.y += this.v.y;
     this.z += this.v.z;
 
+    if (360 <= this.z) {
+      this.z -= 360;
+    }
+
+    var elementSize = Math.max(this.width, this.height) * Math.sqrt(2);
+
     if (
-      this.x > this.windowWidth || this.x + this.width * Math.sqrt(2) < 0 ||
-      this.y > this.windowHeight || this.y + this.height * Math.sqrt(2) < 0
+      this.x > this.windowWidth || this.x + elementSize < 0 ||
+      this.y > this.windowHeight || this.y + elementSize < 0
     ) {
-      this.visible = false;
+      this.isVisible = false;
       document.body.removeChild(this.element);
     }
   };
@@ -80,13 +89,16 @@
 
       if (!requestId) {
         requestId = requestAnimationFrame(function loop () {
-          nojunList = nojunList.filter(function (nojun) {
-            return nojun.visible;
-          });
-          nojunList.forEach(function (nojun) {
+          nojunList.forEach(function (nojun, i, arr) {
             nojun.update();
-            nojun.render();
+
+            if (nojun.isVisible) {
+              nojun.render();
+            } else {
+              arr.splice(i, 1);
+            }
           });
+
           if (nojunList.length) {
             requestId = requestAnimationFrame(loop);
           } else {
@@ -109,6 +121,6 @@
   if (document.readyState !== 'loading') {
     init();
   } else {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', init, false);
   }
 })();
