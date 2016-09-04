@@ -26,7 +26,6 @@ html(lang="ja")
     != feed_tag('atom.xml')
     != css('css/style.css')
     //- link(rel="icon", href= url_for('favicon.ico'))
-    script(src= url_for('js/fixbug.js'), async)
     if is_home()
       script(src= url_for('js/nojun.js'), async)
     script.
