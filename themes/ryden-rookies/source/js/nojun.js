@@ -16,6 +16,7 @@
         clearTimeout(clickTimeout);
         clickCount = 0;
       } else {
+        clearTimeout(clickTimeout);
         clickTimeout = setTimeout(function () {
           clickCount = 0;
         }, CLICK_INTERVAL_DELAY);
@@ -61,8 +62,8 @@
     var elementSize = Math.max(this.width, this.height) * Math.sqrt(2);
 
     if (
-      this.x > this.windowWidth || this.x + elementSize < 0 ||
-      this.y > this.windowHeight || this.y + elementSize < 0
+      this.x >= this.windowWidth || this.x + elementSize <= 0 ||
+      this.y >= this.windowHeight || this.y + elementSize <= 0
     ) {
       this.isVisible = false;
       document.body.removeChild(this.element);
