@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "watchify": "watchify -t babelify src/main.js -o public/bundle.js -d -v"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.11.6"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babelify": "^7.3.0",
+    "watchify": "^3.7.0"
+  }
+}
