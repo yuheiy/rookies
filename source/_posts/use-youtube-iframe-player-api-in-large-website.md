@@ -1,7 +1,7 @@
 ---
 title: 複数の動画を埋め込む場合におけるYouTube IFrame Player APIの辛みを回避する
 date: 2016/09/30 17:49:05
-updated: 2016/09/30 17:49:05
+updated: 2016/10/02 04:51:26
 author: yuhei
 ---
 実務でYouTube IFrame Player APIを利用することが多いのですが、ライブラリの設計上の問題で使うのが辛く感じます。
@@ -10,7 +10,7 @@ author: yuhei
 
 というのも、[YouTube IFrame Player APIのリファレンス](https://developers.google.com/youtube/iframe_api_reference?hl=ja)を見ればわかりますが、利用方法が、
 
-1. `script`要素でYouTube APIを読み込む
+1. `script`要素で非同期にYouTube APIを読み込む
 1. 読み込み完了時点で`window.onYouTubeIframeAPIReady`が呼ばれる
 1. それ以降APIが利用できるようになる
 
