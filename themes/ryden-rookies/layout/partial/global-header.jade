@@ -1,7 +1,7 @@
 header.global-header
   h1.logo
     if is_home()
-      = config.title
+      span= config.title
     else
       a(href= config.root)= config.title
 

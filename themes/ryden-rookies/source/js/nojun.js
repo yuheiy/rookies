@@ -45,7 +45,7 @@
     document.body.appendChild(this.element);
   };
 
-  Nojun.prototype.onResize = function (windowWidth, windowHeight) {
+  Nojun.prototype.setSize = function (windowWidth, windowHeight) {
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
   };
@@ -84,7 +84,7 @@
     var nojunList = [];
     var requestId = null;
 
-    handleTripleClick(document.querySelector('.logo'), function (event) {
+    handleTripleClick(document.querySelector('.logo span'), function (event) {
       var nojun = new Nojun(event.clientX, event.clientY);
       nojunList.push(nojun);
 
@@ -114,14 +114,10 @@
       var windowHeight = window.innerHeight;
 
       nojunList.forEach(function (nojun) {
-        nojun.onResize(windowWidth, windowHeight);
+        nojun.setSize(windowWidth, windowHeight);
       });
     }, false);
   };
 
-  if (document.readyState !== 'loading') {
-    init();
-  } else {
-    document.addEventListener('DOMContentLoaded', init, false);
-  }
+  init();
 })();
