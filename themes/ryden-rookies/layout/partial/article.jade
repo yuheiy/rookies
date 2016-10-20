@@ -1,10 +1,10 @@
 mixin article-inner
   unless is_post()
-    p.post-author
+    p.post__author
       img(src= url_for(`img/${post.author.image}`), alt="")
       = post.author.name_ja
 
-  header.post-header(class= is_post() ? '' : 'is-archive')
+  header.post__header
     h1= post.title
     time(datetime= date_xml(post.date))= date(post.date, date_format)
 
@@ -17,11 +17,11 @@ mixin article-inner
         p.profile__title= post.author.title
         p.profile__text= post.author.description
 
-  .post-content
+  .post__content
     != is_post() ? post.content : post.excerpt
 
   if is_post()
-    footer.post-footer
+    footer.post__footer
       address
         p
           | Written by 
@@ -29,24 +29,25 @@ mixin article-inner
           | .
 
     aside
-      ul.share-buttons
+      ul.post__share-buttons
         li.
           <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         li
           .fb-share-button(data-href= url, data-layout="button")
 
-    aside
-      ul.post-pagination
-        if post.next
-          li.post-pagination__prev
-            a(href= url_for(post.next.path))= post.next.title
-        if post.prev
-          li.post-pagination__next
-            a(href= url_for(post.prev.path))= post.prev.title
-
-article.post
+article(class= `post${is_post() ? '' : ' is-archive'}`)
   if is_post()
     +article-inner
   else
-    a.post-link(href= url_for(post.path))
+    a.post__link(href= url_for(post.path))
       +article-inner
+
+if is_post()
+  nav
+    ul.pagination
+      if post.next
+        li.pagination__prev
+          a(href= url_for(post.next.path))= post.next.title
+      if post.prev
+        li.pagination__next
+          a(href= url_for(post.prev.path))= post.prev.title

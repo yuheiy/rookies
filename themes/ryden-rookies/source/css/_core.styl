@@ -19,24 +19,25 @@ section
 
 // my styles
 :root
-  line-height 1.7
-
-body
+  line-height 1.7 * 0.9
   font-family font-stack-ui
   color black
   text-rendering optimizeLegibility
   background-color white
 
-  &::before
-    content url("../img/ryden.svg")
-    position fixed
-    right 50%
-    bottom 50%
-    z-index -1
-    width 100vh
-    padding 1rem 1.5rem 3rem
-    transform translate(50%,50%) rotateZ(-90deg) "translateY(calc((-100% - %s) / 2))" % width-content
-    box-sizing border-box
+  @media (min-width: 30rem)
+    line-height 1.7
+
+body::before
+  content url("../img/ryden.svg")
+  position fixed
+  right 50%
+  bottom 50%
+  z-index -1
+  width 100vh
+  padding 1rem 1.5rem 3rem
+  transform translate(50%,50%) rotateZ(-90deg) "translateY(calc((-100% - %s) / 2))" % width-content
+  box-sizing border-box
 
 img
   max-width 100%

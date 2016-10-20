@@ -1,98 +1,99 @@
 .post
   margin-top 6rem
-  margin-bottom 6rem
 
-.post-header
-  display flex
-  flex-direction column
+  &.is-archive
+    margin-bottom 6rem
 
-  @media (min-width: 30rem)
-    flex-direction row
-    align-items center
-
-  h1
-    margin-top .5em
-    margin-bottom 0
-
-    .is-archive&
-      margin-top .25em
-      margin-bottom .25em
+  &__header
+    display flex
+    flex-direction column
 
     @media (min-width: 30rem)
-      flex-grow 1
-      margin-top .83em
-      margin-bottom .83em
+      flex-direction row
+      align-items center
 
-      .is-archive&
+    h1
+      margin-top .5em
+      margin-bottom 0
+
+      .is-archive &
+        margin-top .25em
+        margin-bottom .25em
+
+      @media (min-width: 30rem)
+        flex-grow 1
         margin-top .83em
         margin-bottom .83em
 
-  time
-    order -1
+        .is-archive &
+          margin-top .83em
+          margin-bottom .83em
+
+    time
+      order -1
+      font-size font-size-small
+      color color-dark
+      text-align right
+
+      .is-archive &
+        order 0
+        margin-bottom 1rem
+
+      @media (min-width: 30rem)
+        order 0
+        margin-left 1rem
+        white-space nowrap
+
+        .is-archive &
+          margin-bottom 0
+
+  &__author
+    position relative
+    margin-bottom 0
+    padding-top .25em
+    padding-bottom .25em
+    padding-left 2.8em
     font-size font-size-small
-    color color-dark
-    text-align right
 
-    .is-archive&
-      order 0
-      margin-bottom 1rem
+    img
+      position absolute
+      top 0
+      left 0
+      height 100%
+      border-radius 50%
 
-    @media (min-width: 30rem)
-      order 0
-      margin-left 1rem
-      white-space nowrap
+  &__content
+    @extend $clearfix
 
-      .is-archive&
-        margin-bottom 0
+    font-family font-stack-sentences
+    line-height 1.9
+    word-wrap break-word
 
-.post-author
-  position relative
-  margin-bottom 0
-  padding-top .25em
-  padding-bottom .25em
-  padding-left 2.8em
-  font-size font-size-small
+    > :first-child
+      margin-top 0
 
-  img
-    position absolute
-    top 0
-    left 0
-    height 100%
-    border-radius 50%
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+      margin-top 3em
 
-.post-content
-  @extend $clearfix
+    .highlight
+      line-height 1.2
 
-  font-family font-stack-sentences
-  line-height 1.9
-  word-wrap break-word
+  &__footer
+    margin-top 6rem
 
-  > :first-child
-    margin-top 0
+    address
+      font-size .9rem
+      text-align right
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6
-    margin-top 3em
+  &__link
+    color inherit
+    text-decoration none
 
-  .highlight
-    line-height 1.2
-
-.post-footer
-  margin-top 6rem
-
-  address
-    font-size .9rem
-    text-align right
-
-.post-link
-  color inherit
-  text-decoration none
-
-  @media (min-width: 42rem + 2rem * 2)
-    .post-header h1
+    .post__header h1
       position relative
 
       &::before
@@ -107,80 +108,17 @@
     &:hover
     &:active
     &:focus
-      .post-header h1::before
+      .post__header h1::before
         opacity 1
 
-.share-buttons
-  padding-left 0
-  list-style none
-  text-align right
+  &__share-buttons
+    padding-left 0
+    list-style none
+    text-align right
 
-  li
-    display inline-block
-    vertical-align middle
+    li
+      display inline-block
+      vertical-align middle
 
-    &:not(:last-child)
-      margin-right .8rem
-
-.post-pagination
-  display flex
-  flex-direction column-reverse
-  margin-top 6rem
-  padding-left 0
-  list-style none
-
-  @media (min-width: 42rem)
-    flex-direction row
-    font-size font-size-small
-
-  li
-    @media (min-width: 42rem)
-      position relative
-      display flex
-      align-items center
-      flex-basis 50%
-
-    &:not(:last-child)
-      margin-top 1rem
-
-      @media (min-width: 42rem)
-        margin-top 0
-
-    &::before
-      font-size font-size-small
-      white-space pre
-
-      @media (min-width: 42rem)
-        display inline
-        position absolute
-        bottom 50%
-        transform translateY(50%)
-        font-size inherit
-        white-space normal
-
-  &__next
-    @media (min-width: 42rem)
-      justify-content flex-end
-      margin-left auto
-      padding-left .5rem
-      padding-right 1.5em
-      text-align right
-
-    &::before
-      content "次の記事\A"
-
-      @media (min-width: 42rem)
-        content ">"
-        right 0
-
-  &__prev
-    @media (min-width: 42rem)
-      padding-left 1.5em
-      padding-right .5rem
-
-    &::before
-      content "前の記事\A"
-
-      @media (min-width: 42rem)
-        content "<"
-        left 0
+      &:not(:last-child)
+        margin-right .8rem
