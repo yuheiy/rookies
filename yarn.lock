@@ -1418,8 +1418,8 @@ minimist@0.0.8:
     minimist "0.0.8"
 
 moment-timezone@^0.5.4:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.6.tgz#8dcf7bb648d5dcd0f387d6bfd8f3dd9bbba16a86"
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.7.tgz#1305bcada16f046dbbc7ac89abf66effff886cb5"
   dependencies:
     moment ">= 2.6.0"
 
