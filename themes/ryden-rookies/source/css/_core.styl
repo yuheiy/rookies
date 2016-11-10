@@ -21,9 +21,14 @@ section
 :root
   line-height 1.7
   font-family font-stack-ui
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
   color black
   text-rendering optimizeLegibility
   background-color white
+
+  @media (min-width: 60rem)
+    font-size 125%
 
 body::before
   content url("../img/ryden.svg")
