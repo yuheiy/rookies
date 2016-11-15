@@ -1,7 +1,7 @@
 ---
 title: ページごとにJSの処理を分割するためのよさそうな方法
 date: 2016/07/06 09:31:22
-updated: 2016/07/06 12:52:58
+updated: 2016/11/15 18:46:54
 author: yuhei
 ---
 ページごとに実行する処理はバラバラだけど、制作上の都合でJSファイルはひとつにまとめたいということがあります。
@@ -38,11 +38,11 @@ if ($('body').hasClass('home')) {
 ```javascript
 var dispatcher = new Dispacher();
 
-dispatcher.route('common', function () {
+dispatcher.on('common', function () {
   // run on all pages
 });
 
-dispatcher.route('home', function () {
+dispatcher.on('home', function () {
   // run only on home
 });
 
