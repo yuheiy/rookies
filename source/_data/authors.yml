@@ -12,3 +12,11 @@ yuhei:
   description: 2016年新卒入社。Webフロントエンドスペシャリスト。広告業界の荒んだWebサイトにWebの理念を適応させるため、最高企業ライデンへの入社を決める。今後の世界を変革させる人物。
   image: yuhei.jpg
   twitter: _yuheiy
+
+hideo-m:
+  name_ja: 松本 英夫
+  name_en: Hideo Matsumoto
+  title: エンジニア
+  description: 1993年にNCSA Mosaicに出会ってから早幾年。キャリアだけが長くて時運に乗れない残念なタイプ。
+  image: hideo-m.jpg
+  twitter: pekeq
