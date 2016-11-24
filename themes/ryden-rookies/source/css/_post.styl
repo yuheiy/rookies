@@ -8,58 +8,32 @@
     display flex
     flex-direction column
 
-    @media (min-width: 30rem)
-      flex-direction row
-      align-items center
+  &__info
+    display flex
+    align-items center
+    justify-content flex-end
+    order -1
+    font-size font-size-small
 
-    h1
-      margin-top .5em
-      margin-bottom 0
-
-      .is-archive &
-        margin-top .25em
-        margin-bottom .25em
-
-      @media (min-width: 30rem)
-        flex-grow 1
-        margin-top .83em
-        margin-bottom .83em
-
-        .is-archive &
-          margin-top .83em
-          margin-bottom .83em
-
-    time
-      order -1
-      font-size font-size-small
+    > time
+      margin-left 1em
       color color-dark
-      text-align right
-
-      .is-archive &
-        order 0
-        margin-bottom 1rem
-
-      @media (min-width: 30rem)
-        order 0
-        margin-left 1rem
-        white-space nowrap
-
-        .is-archive &
-          margin-bottom 0
 
   &__author
     position relative
+    flex 1
+    margin-top 0
     margin-bottom 0
-    padding-top .25em
-    padding-bottom .25em
-    padding-left 2.8em
+    padding-left 3em
     font-size font-size-small
 
-    img
+    > img
       position absolute
       top 0
       left 0
-      height 100%
+      height calc(100% + .5em)
+      margin-top -.25em
+      margin-bottom -.25em
       border-radius 50%
 
   &__content

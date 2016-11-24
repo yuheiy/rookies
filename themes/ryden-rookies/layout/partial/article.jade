@@ -1,12 +1,12 @@
 mixin article-inner
-  unless is_post()
-    p.post__author
-      img(src= url_for(`img/${post.author.image}`), alt="")
-      = post.author.name_ja
-
   header.post__header
     h1= post.title
-    time(datetime= date_xml(post.date))= date(post.date, date_format)
+    .post__info
+      unless is_post()
+        p.post__author
+          img(src= url_for(`img/${post.author.image}`), alt="")
+          = post.author.name_ja
+      time(datetime= date_xml(post.date))= date(post.date, date_format)
 
   if is_post()
     aside.profile

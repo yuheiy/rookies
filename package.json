@@ -28,6 +28,7 @@
     "url": "git+https://github.com/ryden-inc/rookies.git"
   },
   "scripts": {
+    "start": "hexo serve",
     "build": "hexo generate",
     "predeploy": "rm -rf .deploy_git && git clone -b gh-pages https://github.com/ryden-inc/rookies.git .deploy_git",
     "deploy": "hexo deploy"
