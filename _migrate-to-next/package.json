@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "gulp"
+  },
+  "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "browser-sync": "^2.18.5",
+    "front-matter": "^2.1.1",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-sass": "^3.0.0",
+    "marked": "^0.3.6"
+  }
+}
