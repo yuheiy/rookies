@@ -3,5 +3,13 @@ html(lang="ja")
   include partial/head
 
   body
-    h1 Document
-    p description
+    h1= title
+    p= description
+
+    section
+      footer
+        p= getAuthor(post.author).name
+        time(datetime= getDateTime(post.date))= getDisplayDate(post.date, dateFormat)
+
+      h1= post.title
+      div!= post.content
