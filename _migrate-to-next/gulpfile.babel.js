@@ -1,11 +1,9 @@
+const Promise = require('bluebird')
 const path = require('path')
-const fs = require('fs')
-const mkdirp = require('mkdirp')
+const fs = Promise.promisifyAll(require('fs'))
+const mkdirp = Promise.promisifyAll(require('mkdirp'))
 const del = require('del')
 const moment = require('moment')
-const frontMatter = require('front-matter')
-const marked = require('marked')
-const pug = require('pug')
 const gulp = require('gulp')
 const plugins = require('gulp-load-plugins')()
 const browserSync = require('browser-sync').create()
@@ -42,12 +40,14 @@ const utilFuncs = {
   toDisplayDate: (date, format) => moment(new Date(date)).format(format),
 }
 
-const posts = done => {
+const posts = async () => {
+  const frontMatter = require('front-matter')
+  const marked = require('marked')
+
   const excerptPattern = /<!-- *more *-->/
   const postDir = 'src/posts'
-  const postFiles = fs.readdirSync(postDir)
-  const posts = postFiles
-    .map(file => fs.readFileSync(path.join(postDir, file), 'utf8'))
+  const postFiles = await fs.readdirAsync(postDir)
+  const posts = (await Promise.all(postFiles.map(file => fs.readFileAsync(path.join(postDir, file), 'utf8'))))
     .map(data => frontMatter(data))
     .map(({
       attributes: {
@@ -91,49 +91,64 @@ const posts = done => {
       }
     })
 
-  mkdirp.sync('cache')
-  fs.writeFileSync('cache/posts.json', JSON.stringify(posts))
-  done()
+  await mkdirp.mkdirpAsync('cache')
+  return fs.writeFileAsync('cache/posts.json', JSON.stringify(posts))
 }
 
-const html = done => {
-  mkdirp.sync(path.join('dist', config.root, 'posts'))
-  const posts = JSON.parse(fs.readFileSync('cache/posts.json', 'utf8'))
+const processHtml = (file, data) => {
+  const {minify} = require('html-minifier')
+  const result = minify(data, {
+    removeComments: true,
+    collapseWhitespace: true,
+    collapseBooleanAttributes: true,
+    removeAttributeQuotes: true,
+    removeRedundantAttributes: true,
+    removeEmptyAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    removeOptionalTags: true,
+  })
+  return fs.writeFileAsync(file, result)
+}
 
-  fs.writeFileSync(
-    path.join('dist', config.root, 'index.html'),
-    pug.renderFile('src/html/index.pug', {
-      ...config,
-      ...utilFuncs,
-      currentPath: '/',
-      posts,
-    }),
-    'utf8',
-  )
+const html = async done => {
+  const pug = require('pug')
 
-  fs.writeFileSync(
-    path.join('dist', config.root, 'posts/index.html'),
-    pug.renderFile('src/html/archive.pug', {
-      ...config,
-      ...utilFuncs,
-      currentPath: '/posts/',
-      posts,
-    }),
-    'utf8',
-  )
+  await mkdirp.mkdirpAsync(path.join('dist', config.root, 'posts'))
+  const posts = JSON.parse(await fs.readFileAsync('cache/posts.json', 'utf8'))
+  const postCompiler = pug.compileFile('src/html/post.pug')
 
-  posts.forEach(post => {
-    fs.writeFileSync(
-      path.join('dist', config.root, post.link),
-      pug.renderFile('src/html/post.pug', {
+  await Promise.all([
+    processHtml(
+      path.join('dist', config.root, 'index.html'),
+      pug.renderFile('src/html/index.pug', {
         ...config,
         ...utilFuncs,
-        currentPath: post.link,
-        post,
+        currentPath: '/',
+        posts,
       }),
-      'utf8',
+    ),
+    processHtml(
+      path.join('dist', config.root, 'posts/index.html'),
+      pug.renderFile('src/html/archive.pug', {
+        ...config,
+        ...utilFuncs,
+        currentPath: '/posts/',
+        posts,
+      }),
+    ),
+    ...posts.map(post =>
+      processHtml(
+        path.join('dist', config.root, post.link),
+        postCompiler({
+          ...config,
+          ...utilFuncs,
+          currentPath: post.link,
+          post,
+        })
+      )
     )
-  })
+  ])
 
   browserSync.reload()
   done()
@@ -158,11 +173,39 @@ export const xml = () =>
     .pipe(plugins.rename({extname: '.xml'}))
     .pipe(gulp.dest(path.join('dist', config.root)))
 
-const css = () =>
-  gulp.src('src/css/index.scss')
+const css = () => {
+  const AUTOPREXIER_BROWSERS = [
+    'last 1 version',
+    '> 5% in JP',
+  ]
+
+  return gulp.src('src/css/index.scss')
+    .pipe(plugins.sourcemaps.init({loadMaps: true}))
     .pipe(plugins.sass().on('error', plugins.sass.logError))
+    .pipe(plugins.autoprefixer({
+      browsers: AUTOPREXIER_BROWSERS,
+      cascade: false,
+    }))
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(plugins.cssnano())
+    .pipe(plugins.rename({basename: 'app'}))
     .pipe(gulp.dest(path.join('dist', config.root, 'css')))
     .pipe(browserSync.stream({match: '**/*.css'}))
+}
+
+const img = () =>
+  gulp.src('src/img/**/*')
+    .pipe(gulp.dest(path.join('dist', config.root, 'img')))
+    .pipe(browserSync.stream())
+    .pipe(plugins.imagemin())
+    .pipe(gulp.dest(path.join('dist', config.root, 'img')))
+
+const copy = () =>
+  gulp.src('src/static/**/*')
+    .pipe(gulp.dest(path.join('dist', config.root)))
+    .pipe(browserSync.stream())
+
+const clean = () => del('dist')
 
 const serve = done =>
   browserSync.init({
@@ -173,29 +216,38 @@ const serve = done =>
     open: false,
   }, done)
 
-const clean = () => del('dist')
+const postTasks = gulp.series(
+  posts,
+  gulp.parallel(html, xml),
+)
 
 const watch = done => {
-  gulp.watch('src/posts/**/*.md', gulp.series(
-    posts,
-    gulp.parallel(html, xml),
-  ))
+  gulp.watch('src/posts/**/*.md', postTasks)
   gulp.watch('src/html/**/*.pug', html)
   gulp.watch('src/xml/**/*.pug', xml)
   gulp.watch('src/css/**/*.scss', css)
+  gulp.watch('src/img/**/*', img)
+  gulp.watch('src/static/**/*', copy)
 
   done()
 }
 
-export default gulp.series(
+export const build = gulp.series(
   clean,
   gulp.parallel(
-    gulp.series(
-      posts,
-      gulp.parallel(html, xml),
-    ),
+    postTasks,
     css,
+    img,
+    copy,
   ),
-  serve,
-  watch,
+)
+
+export default gulp.series(build, serve, watch)
+
+export const publish = gulp.series(
+  build,
+  done => {
+    const ghpages = require('gh-pages')
+    ghpages.publish(path.join('dist', config.root), done)
+  }
 )

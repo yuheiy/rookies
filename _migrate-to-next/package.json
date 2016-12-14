@@ -1,20 +1,31 @@
 {
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "build": "gulp build",
+    "deploy": "gulp publish"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
+    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
+    "babel-runtime": "^6.20.0",
+    "bluebird": "^3.4.6",
     "browser-sync": "^2.18.5",
     "del": "^2.2.2",
     "front-matter": "^2.1.1",
+    "gh-pages": "^0.12.0",
     "gulp": "gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cssnano": "^2.1.2",
     "gulp-data": "^1.2.1",
+    "gulp-imagemin": "^3.1.1",
     "gulp-load-plugins": "^1.4.0",
     "gulp-pug": "^3.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^1.9.1",
+    "html-minifier": "^3.2.3",
     "marked": "^0.3.6",
     "mkdirp": "^0.5.1",
     "moment": "^2.17.1",
