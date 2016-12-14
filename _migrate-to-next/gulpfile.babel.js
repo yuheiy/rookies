@@ -7,32 +7,8 @@ const moment = require('moment')
 const gulp = require('gulp')
 const plugins = require('gulp-load-plugins')()
 const browserSync = require('browser-sync').create()
-
-const config = {
-  title: 'ライデンの新人ブログ',
-  description: '株式会社ライデンの新人社員による、日常の日々を綴るブログです。',
-  url: 'https://ryden-inc.github.io/rookies',
-  root: '/rookies/',
-  dateFormat: 'MMM D, YYYY',
-  postCountInHome: 5,
-}
-const authors = {
-  maika: {
-    name: '岡村 昧香',
-    title: 'ディレクター',
-    description: 'つくって遊ぶのが好きな、新米ディレクター。絡まったイヤホン直してもらって受け取った瞬間に絡ませるような女。ファンタならフルーツパンチ、手を汚すなら犯罪じゃなくて桃、血なら鼻血。よろしく。',
-  },
-  yuhei: {
-    name: '安田 祐平',
-    title: 'エンジニア',
-    description: '2016年新卒入社。Webフロントエンドスペシャリスト。広告業界の荒んだWebサイトにWebの理念を適応させるため、最高企業ライデンへの入社を決める。今後の世界を変革させる人物。',
-  },
-  'hideo-m': {
-    name: '松本 英夫',
-    title: 'エンジニア',
-    description: '1993年にNCSA Mosaicに出会ってから早幾年。キャリアだけが長くて時運に乗れない残念なタイプ。',
-  },
-}
+const config = require('./config.json')
+const authors = require('./authors.json')
 
 const utilFuncs = {
   urlFor: relativePath => path.join(config.root, relativePath),
@@ -187,8 +163,8 @@ const css = () => {
       cascade: false,
     }))
     .pipe(plugins.sourcemaps.write('.'))
-    .pipe(plugins.cssnano())
-    .pipe(plugins.rename({basename: 'app'}))
+    .pipe(plugins.if('*.css', plugins.cssnano()))
+    .pipe(plugins.rename({basename: 'ryden'}))
     .pipe(gulp.dest(path.join('dist', config.root, 'css')))
     .pipe(browserSync.stream({match: '**/*.css'}))
 }
@@ -211,6 +187,24 @@ const serve = done =>
   browserSync.init({
     notify: false,
     server: 'dist',
+    middleware(req, res, next) {
+      // `html-minifier`使うと`browserSync`のスクリプトが挿入されないので自力でやる
+      const {pathname} = require('url').parse(req.url)
+      if (
+        pathname === config.root ||
+        pathname === path.join(config.root, 'index.html') ||
+        pathname === path.join(config.root, 'posts/') ||
+        pathname === path.join(config.root, 'posts/index.html') ||
+        new RegExp(`^${path.join(config.root, 'posts/').replace(/\//g, '\\\/')}(\\w|-)*\.html$`).test(pathname) // `/:root/posts/post-title-like-this.html`
+      ) {
+        let filepath = path.join('dist', pathname)
+        if (filepath.endsWith('/')) filepath += 'index.html'
+        const defaultBody = fs.readFileSync(path.join(filepath), 'utf8')
+        const insertIndex = '<!DOCTYPE html>'.length
+        return res.end(defaultBody.substring(0, insertIndex) + '<script async src="/browser-sync/browser-sync-client.js"></script>' + defaultBody.substring(insertIndex))
+      }
+      next()
+    },
     startPath: config.root,
     ghostMode: false,
     open: false,
