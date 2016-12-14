@@ -1,0 +1,24 @@
+.global-footer {
+  display: flex;
+  justify-content: center;
+  max-width: $width-content;
+  margin: $margin auto;
+  padding-right: ($padding / 2);
+  padding-left: ($padding / 2);
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul::before {
+    content: "・";
+    color: $color-gray;
+  }
+}

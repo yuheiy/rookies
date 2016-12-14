@@ -14,6 +14,7 @@ const utilFuncs = {
   urlFor: relativePath => path.join(config.root, relativePath),
   toIsoTime: date => new Date(date).toISOString(),
   toDisplayDate: (date, format) => moment(new Date(date)).format(format),
+  stripHtml: require('striptags'),
 }
 
 const posts = async () => {

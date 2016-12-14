@@ -3,19 +3,21 @@ html(lang="ja")
   include partial/head
 
   body
-    h1= title
-    p= description
+    include partial/global-header
 
-    each post in posts.slice(0, postCountInHome)
-      hr
+    .content
 
-      section
-        footer
-          p= post.author.name
-          time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
-        h1= post.title
-        div!= post.excerpt
-        a(href= urlFor(post.link)) link
+      each post in posts.slice(0, postCountInHome)
 
-    p
-      a(href= urlFor('/posts/')) archive
+        section.post
+          footer
+            p= post.author.name
+            time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
+          h1= post.title
+          div!= post.excerpt
+          a(href= urlFor(post.link)) link
+
+      p
+        a(href= urlFor('/posts/')) archive
+
+    include partial/global-footer

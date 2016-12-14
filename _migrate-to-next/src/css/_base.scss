@@ -1,0 +1,45 @@
+:root {
+  font-family: $font-stack-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: $line-height;
+  text-rendering: optimizeLegibility;
+  color: $color-black;
+  background-color: $color-white;
+
+  @media (min-width: 60rem) {
+    font-size: (100% * 18 / 16);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+body::before {
+  content: image("ryden.svg");
+  position: fixed;
+  right: 50%;
+  bottom: 50%;
+  z-index: -1;
+  padding: 1rem;
+  transform: translate(50%,50%) rotate(-90deg) translateY(calc(-100% - #{$width-content}));
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0 0 $margin;
+}
+
+a {
+  color: $color-primary;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

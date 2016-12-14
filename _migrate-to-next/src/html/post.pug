@@ -3,22 +3,24 @@ html(lang="ja")
   include partial/head
 
   body
-    h1
-      a(href= urlFor('/'))= title
-    p= description
+    include partial/global-header
 
-    section
-      footer
-        p= post.author.name
-        time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
+    .content
 
-      h1= post.title
-      div!= post.content
+      section.post
+        footer
+          p= post.author.name
+          time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
 
-      ul
-        if (post.next)
-          li
-            a(href= urlFor(post.next.link))= post.next.title
-        if (post.prev)
-          li
-            a(href= urlFor(post.prev.link))= post.prev.title
+        h1= post.title
+        div!= post.content
+
+        ul
+          if (post.next)
+            li
+              a(href= urlFor(post.next.link))= post.next.title
+          if (post.prev)
+            li
+              a(href= urlFor(post.prev.link))= post.prev.title
+
+    include partial/global-footer

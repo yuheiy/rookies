@@ -1,0 +1,9 @@
+header.global-header
+  if currentPath === '/'
+    h1= title
+  else
+    h1
+      a(href= urlFor('/'))= title
+  aside
+    p
+      a(href="http://www.ryden.co.jp/") RYDEN Inc.

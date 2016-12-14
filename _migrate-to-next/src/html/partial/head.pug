@@ -1,5 +1,27 @@
-head
+- var _description = (post ? stripHtml(post.excerpt) : description).replace(/\n/g, '').substring(0, 160)
+
+//- todo
+- var _ogImage
+- var _card
+
+head(prefix="og: http://ogp.me/ns#")
   meta(charset="utf-8")
   meta(name="viewport", content="width=device-width, initial-scale=1")
-  title= urlFor(currentPath)
+  meta(name="description", content= _description)
+  if post
+    title= `${post.title} - ${title}`
+  else
+    title= title
+  meta(property="og:title", content= post ? post.title : title)
+  meta(property="og:type", content= post ? 'article' : 'website')
+  meta(property="og:image", content= _ogImage)
+  meta(property="og:url", content= `${url}${currentPath}`)
+  meta(property="og:description", content= _description)
+  meta(property="og:locale", content="ja_JP")
+  meta(property="og:site_name", content= title)
+  meta(property="twitter:card", content= _card)
+  if post && post.author.twitterId
+    meta(property="twitter:creator", content= `@${twitterId}`)
+  link(rel="canonical", href= `${url}${currentPath}`)
+  link(rel="alternate", href= urlFor('atom.xml'), title= title)
   link(rel="stylesheet", href= urlFor('/css/ryden.css'))

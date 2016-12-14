@@ -3,18 +3,19 @@ html(lang="ja")
   include partial/head
 
   body
-    h1
-      a(href= urlFor('/'))= title
-    p= description
+    include partial/global-header
 
-    each post in posts
-      hr
+    .content
 
-      section
-        footer
-          p= post.author.name
-          time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
+      each post in posts
 
-        h1= post.title
-        div!= post.excerpt
-        a(href= urlFor(post.link)) link
+        section.post
+          footer
+            p= post.author.name
+            time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
+
+          h1= post.title
+          div!= post.excerpt
+          a(href= urlFor(post.link)) link
+
+    include partial/global-footer
