@@ -3,13 +3,22 @@ html(lang="ja")
   include partial/head
 
   body
-    h1= title
+    h1
+      a(href= urlFor('/'))= title
     p= description
 
     section
       footer
-        p= getAuthor(post.author).name
-        time(datetime= getDateTime(post.date))= getDisplayDate(post.date, dateFormat)
+        p= post.author.name
+        time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
 
       h1= post.title
       div!= post.content
+
+      ul
+        if (post.next)
+          li
+            a(href= urlFor(post.next.link))= post.next.title
+        if (post.prev)
+          li
+            a(href= urlFor(post.prev.link))= post.prev.title

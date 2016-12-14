@@ -1,0 +1,19 @@
+doctype xml
+feed(xmlns="http://www.w3.org/2005/Atom")
+  title= title
+  link(rel="self", href= urlFor('/atom.xml'))
+  link(href= `${url}/`)
+  updated= toIsoTime(posts[0].updated)
+  id= `${url}/`
+
+  each post in posts
+    entry
+      title= post.title
+      link(rel="self", href=`${url}${post.link}`)
+      id= `${url}${post.link}`
+      published= toIsoTime(post.date)
+      updated= toIsoTime(post.updated)
+      content(type="html")= post.content
+      summary(type="html")= post.excerpt
+      author
+        name= post.author.name

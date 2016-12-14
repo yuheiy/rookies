@@ -6,13 +6,13 @@ html(lang="ja")
     h1= title
     p= description
 
-    each post in posts.slice(0, 2)
+    each post in posts.slice(0, postCountInHome)
       hr
 
       section
         footer
-          p= getAuthor(post.author).name
-          time(datetime= getDateTime(post.date))= getDisplayDate(post.date, dateFormat)
+          p= post.author.name
+          time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
         h1= post.title
         div!= post.excerpt
         a(href= urlFor(post.link)) link

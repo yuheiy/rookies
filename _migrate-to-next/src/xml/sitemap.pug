@@ -1,0 +1,10 @@
+doctype xml
+urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+  url
+    loc= `${url}/`
+  url
+    loc= `${url}/posts/`
+
+  each post in posts
+    url
+      loc= `${url}${post.link}`
