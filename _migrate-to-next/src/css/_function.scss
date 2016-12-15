@@ -5,3 +5,7 @@
 @function image($relative-path) {
   @return asset("img", $relative-path);
 }
+
+@function rem($number) {
+  @return ($number * 1rem);
+}

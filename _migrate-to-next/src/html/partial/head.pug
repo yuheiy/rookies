@@ -10,6 +10,8 @@ head(prefix="og: http://ogp.me/ns#")
   meta(name="description", content= _description)
   if post
     title= `${post.title} - ${title}`
+  else if currentPath === '/posts/'
+    title= `他の記事も見る - ${title}`
   else
     title= title
   meta(property="og:title", content= post ? post.title : title)
@@ -23,5 +25,5 @@ head(prefix="og: http://ogp.me/ns#")
   if post && post.author.twitterId
     meta(property="twitter:creator", content= `@${twitterId}`)
   link(rel="canonical", href= `${url}${currentPath}`)
-  link(rel="alternate", href= urlFor('atom.xml'), title= title)
+  link(rel="alternate", href= urlFor('atom.xml'), type="application/atom+xml")
   link(rel="stylesheet", href= urlFor('/css/ryden.css'))

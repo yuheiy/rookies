@@ -1,0 +1,54 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: $margin-large;
+  margin-bottom: $margin-huge;
+
+  @media (min-width: $breakpoint-content) {
+    flex-direction: row;
+  }
+
+  &__author {
+    width: ($ratio * $ratio * $ratio * $ratio * 1rem); // todo: refactor
+    margin-bottom: $margin-small;
+
+    @media (min-width: $breakpoint-content) {
+      flex: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  &__author img {
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: $breakpoint-content) {
+      flex: ($ratio * $ratio * $ratio); // todo: refactor
+      align-items: stretch;
+      margin-left: $margin-large;
+    }
+
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $ratio-text-small;
+  }
+
+  &__name {
+    margin: 0 0 $margin-tiny;
+    font-weight: bold;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: $ratio-text-small;
+  }
+}

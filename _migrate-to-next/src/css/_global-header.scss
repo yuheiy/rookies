@@ -1,31 +1,32 @@
 .global-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: $width-content;
-  margin: $margin auto;
-  padding-right: ($padding / 2);
-  padding-left: ($padding / 2);
+  margin-right: auto;
+  margin-left: auto;
 
-  h1 {
-    flex: auto;
+  &__logo {
     margin: 0;
-    font-size: 1rem;
+    font-size: $ratio-text;
   }
 
-  h1 a {
+  &__logo a {
     color: inherit;
     text-decoration: none;
   }
 
-  aside p {
-    margin: 0;
+  &__brand {
+    margin-left: $margin;
+    font-size: $ratio-text-small;
   }
 
-  aside a {
+  &__brand a {
     color: $color-gray;
     text-decoration: none;
   }
 
-  aside a:hover {
+  &__brand a:hover {
     text-decoration: underline;
   }
 }

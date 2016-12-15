@@ -3,7 +3,6 @@ const path = require('path')
 const fs = Promise.promisifyAll(require('fs'))
 const mkdirp = Promise.promisifyAll(require('mkdirp'))
 const del = require('del')
-const moment = require('moment')
 const gulp = require('gulp')
 const plugins = require('gulp-load-plugins')()
 const browserSync = require('browser-sync').create()
@@ -13,7 +12,7 @@ const authors = require('./authors.json')
 const utilFuncs = {
   urlFor: relativePath => path.join(config.root, relativePath),
   toIsoTime: date => new Date(date).toISOString(),
-  toDisplayDate: (date, format) => moment(new Date(date)).format(format),
+  toDisplayDate: (date, format) => require('moment')(new Date(date)).format(format),
   stripHtml: require('striptags'),
 }
 
@@ -157,15 +156,17 @@ const css = () => {
   ]
 
   return gulp.src('src/css/index.scss')
-    .pipe(plugins.sourcemaps.init({loadMaps: true}))
+    .pipe(plugins.rename({basename: 'ryden'}))
+    .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass().on('error', plugins.sass.logError))
     .pipe(plugins.autoprefixer({
       browsers: AUTOPREXIER_BROWSERS,
       cascade: false,
     }))
-    .pipe(plugins.sourcemaps.write('.'))
-    .pipe(plugins.if('*.css', plugins.cssnano()))
-    .pipe(plugins.rename({basename: 'ryden'}))
+    .pipe(plugins.cssnano())
+    .pipe(plugins.sourcemaps.write('.', {
+      destPath: 'ryden.css',
+    }))
     .pipe(gulp.dest(path.join('dist', config.root, 'css')))
     .pipe(browserSync.stream({match: '**/*.css'}))
 }

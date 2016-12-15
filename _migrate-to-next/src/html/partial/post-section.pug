@@ -1,0 +1,25 @@
+mixin _post-section-inner(post, isSinglePost)
+  footer.post__info
+    if !isSinglePost
+      .post__avatar(style={'background-image': `url("${urlFor(`/img/${post.author.image}`)}")`})
+      p.post__author= post.author.name
+    time.post__date(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
+  h1.post__heading= post.title
+  if isSinglePost
+    aside.profile
+      .profile__author
+        img(src= urlFor(`/img/${post.author.image}`), alt="")
+      .profile__detail
+        p.profile__title= post.author.title
+        p.profile__name= post.author.name
+        p.profile__description= post.author.description
+  if currentPath !== '/posts/'
+    div.post__content!= isSinglePost ? post.content : post.excerpt
+
+mixin post-section(post, isSinglePost)
+  section.post
+    if isSinglePost
+      +_post-section-inner(post, isSinglePost)
+    else
+      a.post__link(href= urlFor(post.link))
+        +_post-section-inner(post, isSinglePost)

@@ -1,3 +1,6 @@
+//- mixin
+include partial/post-section
+
 doctype html
 html(lang="ja")
   include partial/head
@@ -5,17 +8,8 @@ html(lang="ja")
   body
     include partial/global-header
 
-    .content
-
+    main.content
       each post in posts
-
-        section.post
-          footer
-            p= post.author.name
-            time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
-
-          h1= post.title
-          div!= post.excerpt
-          a(href= urlFor(post.link)) link
+        +post-section(post)
 
     include partial/global-footer

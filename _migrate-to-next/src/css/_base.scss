@@ -1,19 +1,22 @@
 :root {
   font-family: $font-stack-ui;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: $line-height;
   text-rendering: optimizeLegibility;
-  color: $color-black;
-  background-color: $color-white;
 
-  @media (min-width: 60rem) {
-    font-size: (100% * 18 / 16);
+  $root-font-size-ratio: (18 / 16);
+  @media (min-width: #{($width-content + $margin) * $root-font-size-ratio}) {
+    font-size: percentage($root-font-size-ratio);
   }
 }
 
 body {
-  margin: 0;
+  margin: $margin ($margin / 2);
+  color: $color-black;
+  background-color: $color-white;
 }
 
 body::before {
@@ -22,9 +25,13 @@ body::before {
   right: 50%;
   bottom: 50%;
   z-index: -1;
-  padding: 1rem;
-  transform: translate(50%,50%) rotate(-90deg) translateY(calc(-100% - #{$width-content}));
-  box-sizing: border-box;
+  width: calc((100vmax + 100vmin) / 2);
+  transform: translate(50%,50%) rotate(-45deg);
+}
+
+h1 {
+  font-size: $ratio-text-large;
+  line-height: $line-height-tiny;
 }
 
 p {
@@ -42,4 +49,8 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+main {
+  display: block; // for IE 11
 }

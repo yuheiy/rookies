@@ -1,6 +1,7 @@
 .content {
   max-width: $width-content;
-  margin: $margin-large auto 0;
-  padding-right: ($padding / 2);
-  padding-left: ($padding / 2);
+  margin: $margin-huge auto;
+  text-align: justify;
+  word-wrap: break-word; // for IE 11
+  overflow-wrap: break-word;
 }

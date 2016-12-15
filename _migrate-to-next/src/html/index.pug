@@ -1,3 +1,6 @@
+//- mixin
+include partial/post-section
+
 doctype html
 html(lang="ja")
   include partial/head
@@ -5,19 +8,12 @@ html(lang="ja")
   body
     include partial/global-header
 
-    .content
-
+    main.content
       each post in posts.slice(0, postCountInHome)
+        +post-section(post)
 
-        section.post
-          footer
-            p= post.author.name
-            time(datetime= toIsoTime(post.date))= toDisplayDate(post.date, dateFormat)
-          h1= post.title
-          div!= post.excerpt
-          a(href= urlFor(post.link)) link
-
-      p
-        a(href= urlFor('/posts/')) archive
+      nav
+        p
+          a(href= urlFor('/posts/')) 他の記事も見る
 
     include partial/global-footer
