@@ -7,6 +7,8 @@ $ratio-text: rem($ratio-text-primary);
 $ratio-text-small: rem($ratio-text-secondary / $ratio);
 $ratio-text-large: rem($ratio-text-secondary);
 
+$ratio-root-text-large: (18 / 16);
+
 $margin: rem($ratio);
 $margin-tiny: ($margin / $ratio / $ratio);
 $margin-small: ($margin / $ratio);
@@ -15,16 +17,18 @@ $margin-huge: ($margin * $ratio * $ratio);
 
 $line-height: $ratio;
 $line-height-tiny: ($ratio * 0.8);
-// $line-height-small: ($ratio * 0.9);
+$line-height-small: ($ratio * 0.9);
 
 $width-content: 40rem;
 
 $breakpoint-content: ($width-content + $margin);
+$breakpoint-full: (($width-content + $margin) * $ratio-root-text-large);
 
 // color
 $color-black: hsl(0, 0, 20%);
 $color-white: hsl(0, 0, 98%);
 $color-gray: mix($color-black, $color-white);
+$color-light-gray: mix($color-gray, $color-white);
 $color-primary: hsl(202deg, 100%, 49%);
 
 // font

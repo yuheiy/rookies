@@ -7,9 +7,8 @@
   line-height: $line-height;
   text-rendering: optimizeLegibility;
 
-  $root-font-size-ratio: (18 / 16);
-  @media (min-width: #{($width-content + $margin) * $root-font-size-ratio}) {
-    font-size: percentage($root-font-size-ratio);
+  @media (min-width: $breakpoint-full) {
+    font-size: percentage($ratio-root-text-large);
   }
 }
 
@@ -34,16 +33,84 @@ h1 {
   line-height: $line-height-tiny;
 }
 
+h2 {
+  line-height: $line-height-tiny;
+}
+
+h3 {
+  line-height: $line-height-tiny;
+}
+
 p {
   margin: 0 0 $margin;
+}
+
+hr {
+  margin: $margin-large 0;
+  clear: both;
+  line-height: 1;
+  color: $color-gray;
+  text-align: center;
+  border: 0;
+
+  &::before {
+    content: "* * *"
+  }
+}
+
+pre {
+  $gutter: ($margin / 2);
+
+  margin: 0 (- $gutter) $margin;
+  padding-right: $gutter;
+  padding-left: $gutter;
+  overflow: auto;
+  line-height: $line-height-tiny;
+  background-color: $color-black;
+  color: $color-white;
+
+  @media (min-width: $breakpoint-content) {
+    $m: calc((100vw - #{$width-content}) / 2 * -1);
+    $p: calc((100vw - #{$width-content}) / 2);
+
+    margin-right: $m;
+    margin-left: $m;
+    padding-right: $p;
+    padding-left: $p;
+  }
+
+  @media (min-width: ($breakpoint-full + ($margin * 2))) {
+    margin-right: (- $margin);
+    margin-left: (- $margin);
+    padding: ($margin / 2) $margin;
+  }
+}
+
+ol,
+ul {
+  margin: 0 0 $margin;
+}
+
+figure {
+  margin: 0 0 $margin;
+}
+
+main {
+  display: block; // for IE 11
 }
 
 a {
   color: $color-primary;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     text-decoration: none;
   }
+}
+
+code {
+  font-family: $font-stack-monospace;
 }
 
 img {
@@ -51,6 +118,16 @@ img {
   height: auto;
 }
 
-main {
-  display: block; // for IE 11
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: .5em 1em;
+  border-bottom: 1px solid $color-gray;
+}
+
+svg:not(:root) {
+  overflow: hidden;
 }

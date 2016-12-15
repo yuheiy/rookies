@@ -11,13 +11,13 @@ html(lang="ja")
     main.content
       +post-section(post, true)
 
-
-      ul
-        if (post.next)
-          li
-            a(href= urlFor(post.next.link))= post.next.title
-        if (post.prev)
-          li
-            a(href= urlFor(post.prev.link))= post.prev.title
+      nav
+        ul.pagination
+          if post.next
+            li.pagination__next
+              a(href= urlFor(post.next.link))= post.next.title
+          if post.prev
+            li.pagination__prev
+              a(href= urlFor(post.prev.link))= post.prev.title
 
     include partial/global-footer

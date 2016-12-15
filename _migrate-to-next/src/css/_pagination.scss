@@ -1,0 +1,25 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__next {
+    margin-bottom: $margin;
+  }
+
+  &__next::before,
+  &__prev::before {
+    display: block;
+    font-size: $ratio-text-small;
+  }
+
+  &__next::before {
+    content: "次の記事";
+  }
+
+  &__prev::before {
+    content: "前の記事";
+  }
+}

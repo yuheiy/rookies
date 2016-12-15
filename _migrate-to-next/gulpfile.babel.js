@@ -38,6 +38,12 @@ const posts = async () => {
       const slug = path.basename(postFiles[i], '.md')
       const link = `/posts/${slug}.html`
       const parsed = marked(body)
+
+// https://github.com/chjj/marked#renderer
+// https://github.com/chjj/marked/blob/master/lib/marked.js#L890-L897
+// todo: hack <img> element
+
+
       const content = parsed.replace(excerptPattern, '')
       const excerpt = parsed.substring(0, parsed.search(excerptPattern))
 
