@@ -25,3 +25,5 @@ head(prefix="og: http://ogp.me/ns#")
   link(rel="canonical", href= `${url}${currentPath}`)
   link(rel="alternate", href= urlFor('atom.xml'), type="application/atom+xml")
   link(rel="stylesheet", href= urlFor('/css/ryden.css'))
+  if currentPath === '/'
+    script(src= urlFor('/js/nojun.js'), defer)
