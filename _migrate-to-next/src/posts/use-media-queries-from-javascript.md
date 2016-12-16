@@ -39,7 +39,7 @@ mql.addListener(function (mql) {
 });
 ```
 
-[これを利用した簡単な実装例がこちらです。](/rookies/demos/use-media-queries-from-javascript.html)
+[これを利用した簡単な実装例がこちらです。](/demos/use-media-queries-from-javascript.html)
 
 CSSのメディアクエリの評価結果の変化に合わせて処理を実行するとき、これまでは`resize`イベントを監視したり、ブレイクポイントを`px`以外で設定しているとJavaScriptで毎回計算したりというような面倒なことをやっていました。
 このAPIを利用することでそれらの処理が簡潔に行えます。

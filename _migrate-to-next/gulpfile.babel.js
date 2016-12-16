@@ -19,10 +19,48 @@ const utilFuncs = {
 const posts = async () => {
   const frontMatter = require('front-matter')
   const marked = require('marked')
+  const cheerio = require('cheerio')
+
   const renderer = new marked.Renderer()
+  renderer.link = (href, title, text) => {
+    // https://github.com/chjj/marked/blob/master/lib/marked.js#L1096-L1108
+    function unescape(html) {
+    	// explicitly match decimal, hex, and named HTML entities
+      return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
+        n = n.toLowerCase();
+        if (n === 'colon') return ':';
+        if (n.charAt(0) === '#') {
+          return n.charAt(1) === 'x'
+            ? String.fromCharCode(parseInt(n.substring(2), 16))
+            : String.fromCharCode(+n.substring(1));
+        }
+        return '';
+      });
+    }
+
+    if (renderer.options.sanitize) {
+      let prot
+      try {
+        prot = decodeURIComponent(unescape(href))
+          .replace(/[^\w:]/g, '')
+          .toLowerCase()
+      } catch (e) {
+        return ''
+      }
+      if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0) {
+        return ''
+      }
+    }
+
+    // パスにサブディレクトリをprependする
+    if (/^\/(\w|-|\.|~)+/.test(href)) href = href.replace('/', config.root)
+
+    return `<a href="${href}"${title ? ` title="${title}"` : ''}>${text}</a>`
+  }
   renderer.image = (href, title, alt) => {
     // パスにサブディレクトリをprependする
     if (/^\/(\w|-|\.|~)+/.test(href)) href = href.replace('/', config.root)
+
     return `<img src="${href}" alt="${alt}"${title ? ` title="${title}"` : ''}${renderer.options.xhtml ? '/>' : '>'}`
   }
   const markedOpts = {renderer}
@@ -47,6 +85,19 @@ const posts = async () => {
       const parsed = marked(body, markedOpts)
       const content = parsed.replace(excerptPattern, '')
       const excerpt = parsed.substring(0, parsed.search(excerptPattern))
+      const $ = cheerio.load(parsed)
+      const coverImageSrc = $('img').first().attr('src')
+      let coverImage
+      if (coverImageSrc) {
+        if (/^https?:\/\//.test(coverImageSrc)) {
+          coverImage = coverImageSrc
+        } else if (coverImageSrc.startsWith('//')) {
+          const [scheme] = /^https?/.exec(config.url)
+          coverImage = `${scheme}:${coverImageSrc}`
+        } else {
+          coverImage = `${config.url}${coverImageSrc.replace(config.root, '/')}`
+        }
+      }
 
       return {
         title,
@@ -56,6 +107,7 @@ const posts = async () => {
         author,
         content,
         excerpt,
+        coverImage,
       }
     })
     .sort((a, b) => {

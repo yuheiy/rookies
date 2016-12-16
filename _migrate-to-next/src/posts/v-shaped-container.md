@@ -12,7 +12,7 @@ author: yuhei
 
 **後日追記**  
 **これの改良版の記事を書きました。**  
-**[CSSでより良いハの字型の背景](/rookies/posts/v-shaped-container-next.html)**
+**[CSSでより良いハの字型の背景](/posts/v-shaped-container-next.html)**
 
 まず、よくある背景が傾いただけのものは割と簡単にできます。
 
@@ -36,7 +36,7 @@ author: yuhei
 
 ターゲットの要素の擬似要素として背景として表示させるものを作り、`transform`で傾かせています。
 
-<figure class="large">{% img /img/post/v-shaped-container/skew.png "" %}</figure>
+<figure class="large">![](/img/posts/v-shaped-container/skew.png)</figure>
 
 ただ、このままでは部分的に中の要素がはみ出してしまいます。  
 なので、三角関数で適当に計算します。
@@ -78,13 +78,13 @@ skewed-container(deg, bg-color)
 
 Sassでも三角関数は使えなくもないですが、[Stylusならビルトイン関数として備わっている](http://stylus-lang.com/docs/bifs.html)のでそれを利用しました。
 
-[こんな感じの表示になります。](/rookies/demos/v-shaped-container/skewed-container.html)
+[こんな感じの表示になります。](/demos/v-shaped-container/skewed-container.html)
 
 ---
 
 そして、これと同じようなノリでハの字型の背景を実現できないかといろいろ試行錯誤しました。最終的にものになったアイデアは、**背景の上下にCSSで作った三角形を半分見せる** という方法です。
 
-<figure class="drop-left">{% img /img/post/v-shaped-container/triangle.png "" %}</figure>
+<figure class="drop-left">![](/img/posts/v-shaped-container/triangle.png)</figure>
 
 [CSSの`border`を使って三角形を描画する](https://css-tricks.com/snippets/css/css-triangle/)テクニックがありますが、それを利用して左向き（あるいは右向き）の三角形を作り、垂直方向に二等分すると、まさに斜めに傾いた背景のパーツとして利用できます。
 
@@ -138,14 +138,14 @@ v-shaped-container(gap, bg-color)
 </div>
 ```
 
-[実際にはこのように表示されます。](/rookies/demos/v-shaped-container/v-shaped-container.html)
+[実際にはこのように表示されます。](/demos/v-shaped-container/v-shaped-container.html)
 
 ---
 
 さてこれでハの字型の背景を実現できたわけですが、それに加えて背景を半透明にしたいという要望がありました。  
 背景をこのまま半透明にすると、三角形とインナーのコンテンツの背景が重なって表示されてしまい、意図した通りになりません。
 
-<figure class="large">{% img /img/post/v-shaped-container/overlap.png "" %}</figure>
+<figure class="large">![](/img/posts/v-shaped-container/overlap.png)</figure>
 
 これを解決させるために、三角形の重なっている部分を`overflow: hidden`で隠します。  
 よって以下のようになります。
@@ -213,7 +213,7 @@ v-shaped-container(gap, bg-color)
 </div>
 ```
 
-これを利用すると、[それぞれの背景を重ね合わせた上で、その後ろの背景も見せるというような演出（デモ）](/rookies/demos/v-shaped-container/v-shaped-opacity-container.html)もできるようになります。
+これを利用すると、[それぞれの背景を重ね合わせた上で、その後ろの背景も見せるというような演出（デモ）](/demos/v-shaped-container/v-shaped-opacity-container.html)もできるようになります。
 
 ただ、こちらの方が無駄な`div`要素が増えてしまうので、半透明にする必要がなければ前の方法を利用した方が良さそうです。
 

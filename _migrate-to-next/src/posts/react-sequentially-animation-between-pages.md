@@ -201,7 +201,7 @@ class HomePage extends React.Component {
 
 Reactとあまり関係ありませんが、上の例で使用している[dynamics.js](http://dynamicsjs.com/)はオブジェクトの値を変化させるのに便利です。
 
-[この仕組みで実際に動いているデモ](/rookies/demos/react-sequentially-animation-between-pages/#/)と、[そのソース](https://github.com/ryden-inc/rookies/tree/master/source/_demos/react-sequentially-animation-between-pages)です。
+[この仕組みで実際に動いているデモ](/demos/react-sequentially-animation-between-pages/#/)と、[そのソース](https://github.com/ryden-inc/rookies/tree/master/source/_demos/react-sequentially-animation-between-pages)です。
 
 ---
 

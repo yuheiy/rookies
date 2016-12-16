@@ -37,7 +37,7 @@ html(lang= lang)
 ```
 
 インラインスクリプトの記述に関してはこちらを参照してください。  
-[ページごとにJSの処理を分割するためのよさそうな方法](/rookies/posts/page-dispatcher.html)
+[ページごとにJSの処理を分割するためのよさそうな方法](/posts/page-dispatcher.html)
 
 ## テンプレート側に必要なユーティリティーやデータを提供する
 

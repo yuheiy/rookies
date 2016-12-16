@@ -13,16 +13,16 @@ browserifyには、そのための方法が用意されていて、指定した�
 
 例えば、以下のようなファイルを、jQueryとそれ以外のコードのふたつに分割したいとします。
 
-{% codeblock message.js lang:javascript %}
+```javascript
 var message = 'hello world';
 module.exports = message;
-{% endcodeblock %}
+```
 
-{% codeblock main.js lang:javascript %}
+```javascript
 var $ = require('jquery');
 var message = require('./message');
 $(document.body).text(message);
-{% endcodeblock %}
+```
 
 この場合、jQueryはグローバルに`require`できるようにして、エントリーポイントである`main.js`にはjQueryを含めないようにファイル出力します。
 

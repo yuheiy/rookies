@@ -27,71 +27,58 @@ author: yuhei
 画像を大きく表示します。  
 小さい画像の場合、引き伸ばして表示されます。
 
-<figure class="large">{% img /img/post/styleguide/building.jpg ニューヨークの高層ビル %}</figure>
+<figure class="large">![ニューヨークの高層ビル](/img/posts/styleguide/building.jpg)</figure>
 
-```html
-<figure class="large">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+```markdown
+<figure class="large">![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
 ```
 
 ### 左にはみ出した画像
 
-<figure class="drop-left">{% img /img/post/styleguide/noda-red.jpg 野田レッド %}</figure>
+<figure class="drop-left">![野田レッド](/img/posts/styleguide/noda-red.jpg)</figure>
 
-ウィンドウ幅が大きい（`960px`以上）場合、画像が左にはみ出して、その右には続くテキストが回りこむようになります。  
-画像のサイズは、最大`480px`、最小`160px`まで伸縮されます。
+画像が左にはみ出して、その右には続くテキストが回りこむようになります。画像の幅は、最大でコンテンツ幅の半分まで縮小されます。
 
-ウィンドウ幅が小さい場合、画像ははみ出さず、続くテキストが回りこむだけになります。  
-またその場合、画像の最大幅はコンテンツ幅の半分になります。
-
-<div style="clear: both;"></div>
-
-```html
-<figure class="drop-left">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+```markdown
+<figure class="drop-left">![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
 ```
 
 ### 右にはみ出した画像
 
-<figure class="drop-right">{% img /img/post/styleguide/noda-yellow.jpg 野田イエロー %}</figure>
+<figure class="drop-right">![野田イエロー](/img/posts/styleguide/noda-yellow.jpg)</figure>
 
 左にはみ出した画像の逆です。
 
-<div style="clear: both;"></div>
-
-```html
-<figure class="drop-right">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+```markdown
+<figure class="drop-right">![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
 ```
 
 ### 中央寄せされた画像
 
-<figure class="centered">{% img /img/post/styleguide/noda-red.jpg 野田レッド %}</figure>
+<figure class="centered">![野田レッド](/img/posts/styleguide/noda-red.jpg)</figure>
 
-画像を中央寄せして表示します。  
-横幅`960px`以下の画像にのみ使用してください。
+画像を中央寄せして表示します。横幅`720px`以下の画像にのみ使用してください。
 
-```html
-<figure class="centered">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+```markdown
+<figure class="centered">![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
 ```
 
 ### ウィンドウ幅いっぱいの画像
 
-ウィンドウの幅いっぱいまで画像が引き伸ばして表示されます。  
-画像が小さい場合は拡大されます。
+ウィンドウの幅いっぱいまで画像が引き伸ばして表示されます。画像が小さい場合は拡大されます。できるだけ横の比率が高い画像を利用してください。
 
-できるだけ横の比率が高い画像を利用してください。
+<figure class="cover">![謎のかっこいい鳥](/img/posts/styleguide/bird.jpg)</figure>
 
-<figure class="cover">{% img /img/post/styleguide/bird.jpg 謎のかっこいい鳥 %}</figure>
-
-```html
-<figure class="cover">{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+```markdown
+<figure class="cover">![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
 ```
 
-### スタイルが施されてない画像
+### 普通の画像
 
-特別なスタイルが施されてない画像です。  
-上下に最低限のマージンしか設けられておらず、コンテンツ幅が画像の最大幅になります。
+上記に使いたいスタイルがない場合に利用してください。コンテンツ幅が画像の最大幅になります。
 
-<figure>{% img /img/post/styleguide/building2.jpg なんかかっこいいビル %}</figure>
+<figure>![なんかかっこいいビル](/img/posts/styleguide/building2.jpg)</figure>
 
-```html
-<figure>{% img /img/post/post-slug-name/image-file-name.ext altに入る文字 %}</figure>
+```markdown
+<figure>![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
 ```

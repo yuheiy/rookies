@@ -8,7 +8,7 @@ CSSでスプライトアニメーションをコンテンツの背景にフィ�
 
 <!-- more -->
 
-縦一列にコマが5つ分並べられたスプライト画像を想定して、それを[コンテンツの背景いっぱいに表示](/rookies/demos/sprite-image-fit-in-content/)させるCSSです。
+縦一列にコマが5つ分並べられたスプライト画像を想定して、それを[コンテンツの背景いっぱいに表示](/demos/sprite-image-fit-in-content/)させるCSSです。
 
 ```html
 <body>
@@ -55,7 +55,7 @@ el.style.backgroundPosition = `${100 * currentFrame / frameCount - 1}%`;
 
 みたいな感じにすれば良いですが、CSS Animationの`steps`でやる場合は若干注意点がありました。
 
-<figure class="drop-left">{% img /img/post/sprite-image-fit-in-content/background-position.png "" %}</figure>
+<figure class="drop-left">![](/img/posts/sprite-image-fit-in-content/background-position.png)</figure>
 
 `background-position`の値を`100%`に設定すると、はみ出さずに、左の図で言うと紫のブロックがぴったりに表示されるようになります。
 

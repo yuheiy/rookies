@@ -22,7 +22,7 @@ $line-height-small: ($ratio * 0.9);
 $width-content: 40rem;
 
 $breakpoint-content: ($width-content + $margin);
-$breakpoint-full: (($width-content + $margin) * $ratio-root-text-large);
+$breakpoint-full: ($breakpoint-content * $ratio-root-text-large);
 
 // color
 $color-black: hsl(0, 0, 20%);

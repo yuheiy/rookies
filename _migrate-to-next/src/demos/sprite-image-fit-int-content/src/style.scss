@@ -1,0 +1,32 @@
+body {
+  color: #fff;
+}
+
+$frame-count: 5;
+$seconds-per-frame: 1;
+
+.sprite-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url("sprite.png");
+  background-repeat: no-repeat;
+  background-size: 100% $frame-count * 100%;
+  animation: sprite #{$frame-count * $seconds-per-frame}s steps($frame-count) infinite;
+}
+
+@keyframes sprite {
+  from {
+    background-position: left top;
+  }
+  to {
+    background-position: left 100% * $frame-count / ($frame-count - 1);
+  }
+}
+
+.preview {
+  border: 5px solid;
+}

@@ -61,6 +61,7 @@ hr {
 pre {
   $gutter: ($margin / 2);
 
+  clear: both;
   margin: 0 (- $gutter) $margin;
   padding-right: $gutter;
   padding-left: $gutter;
@@ -93,6 +94,7 @@ ul {
 }
 
 figure {
+  clear: both;
   margin: 0 0 $margin;
 }
 

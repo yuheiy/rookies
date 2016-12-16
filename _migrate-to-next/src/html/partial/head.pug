@@ -1,8 +1,6 @@
 - var _description = (post ? stripHtml(post.excerpt) : description).replace(/\n/g, '').substring(0, 160)
-
-//- todo
-- var _ogImage
-- var _card
+- var _ogImage = post ? (post.coverImage || `${url}/img/${post.author.image}`) : `${url}/img/ogp.png`
+- var _card = (post && !post.coverImage) ? 'summary' : 'summary_large_image'
 
 head(prefix="og: http://ogp.me/ns#")
   meta(charset="utf-8")
@@ -22,8 +20,8 @@ head(prefix="og: http://ogp.me/ns#")
   meta(property="og:locale", content="ja_JP")
   meta(property="og:site_name", content= title)
   meta(property="twitter:card", content= _card)
-  if post && post.author.twitterId
-    meta(property="twitter:creator", content= `@${twitterId}`)
+  if post && post.author.twitter
+    meta(property="twitter:creator", content= `@${post.author.twitter}`)
   link(rel="canonical", href= `${url}${currentPath}`)
   link(rel="alternate", href= urlFor('atom.xml'), type="application/atom+xml")
   link(rel="stylesheet", href= urlFor('/css/ryden.css'))
