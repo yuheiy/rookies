@@ -11,6 +11,15 @@ html(lang="ja")
     main.content
       +post-section(post, true)
 
+      aside.social
+        ul
+          li
+            a.social__twitter(href= `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${url}${currentPath}`)}${post.author.twitter ? `&via=${post.author.twitter}` : ''}`)
+              include partial/twitter.svg
+          li
+            a.social__facebook(href= `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${url}${currentPath}`)}`)
+              include partial/facebook.svg
+
       nav
         ul.pagination
           if post.next

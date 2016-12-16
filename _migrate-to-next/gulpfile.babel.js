@@ -19,10 +19,17 @@ const utilFuncs = {
 const posts = async () => {
   const frontMatter = require('front-matter')
   const marked = require('marked')
-
+  const renderer = new marked.Renderer()
+  renderer.image = (href, title, alt) => {
+    // パスにサブディレクトリをprependする
+    if (/^\/(\w|-|\.|~)+/.test(href)) href = href.replace('/', config.root)
+    return `<img src="${href}" alt="${alt}"${title ? ` title="${title}"` : ''}${renderer.options.xhtml ? '/>' : '>'}`
+  }
+  const markedOpts = {renderer}
   const excerptPattern = /<!-- *more *-->/
   const postDir = 'src/posts'
-  const postFiles = await fs.readdirAsync(postDir)
+  const postFiles = (await fs.readdirAsync(postDir))
+    .filter(file => file.endsWith('.md'))
   const posts = (await Promise.all(postFiles.map(file => fs.readFileAsync(path.join(postDir, file), 'utf8'))))
     .map(data => frontMatter(data))
     .map(({
@@ -37,13 +44,7 @@ const posts = async () => {
       author = ({...authors[author]})
       const slug = path.basename(postFiles[i], '.md')
       const link = `/posts/${slug}.html`
-      const parsed = marked(body)
-
-// https://github.com/chjj/marked#renderer
-// https://github.com/chjj/marked/blob/master/lib/marked.js#L890-L897
-// todo: hack <img> element
-
-
+      const parsed = marked(body, markedOpts)
       const content = parsed.replace(excerptPattern, '')
       const excerpt = parsed.substring(0, parsed.search(excerptPattern))
 
@@ -225,7 +226,7 @@ const postTasks = gulp.series(
 
 const watch = done => {
   gulp.watch('src/posts/**/*.md', postTasks)
-  gulp.watch('src/html/**/*.pug', html)
+  gulp.watch('src/html/**/*', html)
   gulp.watch('src/xml/**/*.pug', xml)
   gulp.watch('src/css/**/*.scss', css)
   gulp.watch('src/img/**/*', img)
@@ -246,10 +247,7 @@ export const build = gulp.series(
 
 export default gulp.series(build, serve, watch)
 
-export const publish = gulp.series(
-  build,
-  done => {
-    const ghpages = require('gh-pages')
-    ghpages.publish(path.join('dist', config.root), done)
-  }
-)
+export const publish = done => {
+  const ghpages = require('gh-pages')
+  ghpages.publish(path.join('dist', config.root), done)
+}

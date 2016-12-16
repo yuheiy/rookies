@@ -65,6 +65,7 @@ pre {
   padding-right: $gutter;
   padding-left: $gutter;
   overflow: auto;
+  font-size: $ratio-text-small;
   line-height: $line-height-tiny;
   background-color: $color-black;
   color: $color-white;
@@ -110,6 +111,7 @@ a {
 }
 
 code {
+  font-size: 1em;
   font-family: $font-stack-monospace;
 }
 

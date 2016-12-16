@@ -1,7 +1,6 @@
 .pagination {
   display: flex;
   flex-direction: column;
-  margin: 0;
   padding: 0;
   list-style: none;
 
@@ -11,15 +10,15 @@
 
   &__next::before,
   &__prev::before {
-    display: block;
     font-size: $ratio-text-small;
+    white-space: pre;
   }
 
   &__next::before {
-    content: "次の記事";
+    content: "次の記事\A";
   }
 
   &__prev::before {
-    content: "前の記事";
+    content: "前の記事\A";
   }
 }

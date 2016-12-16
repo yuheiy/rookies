@@ -1,0 +1,36 @@
+.social {
+  margin-top: ($margin-large - $margin-huge);
+  margin-bottom: $margin-huge;
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-left: $margin-tiny;
+  }
+
+  svg {
+    $size: rem($ratio);
+
+    width: $size;
+    height: $size;
+  }
+
+  path {
+    fill: $color-black;
+    transition: fill .3s ease-out;
+  }
+
+  &__twitter:hover path {
+    fill: #1da1f2;
+  }
+
+  &__facebook:hover path {
+    fill: #3b5998;
+  }
+}

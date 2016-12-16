@@ -2,8 +2,8 @@
 
 - ogImage
 - twitter card
-- markedのRendererをoverrideして<img>要素に`/rookies/`がつくようにする
-- social shareボタン
+- 記事中の画像の装飾の調整
 - hxのスタイリング
 
+- iphoneで<pre>がscrollにならない
 - IE11
