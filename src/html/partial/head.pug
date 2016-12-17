@@ -27,3 +27,12 @@ head(prefix="og: http://ogp.me/ns#")
   link(rel="stylesheet", href= urlFor('/css/ryden.css'))
   if currentPath === '/'
     script(src= urlFor('/js/nojun.js'), defer)
+  script.
+    if (location.hostname === 'ryden-inc.github.io') {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12088543-11', 'auto');
+      ga('send', 'pageview');
+    }
