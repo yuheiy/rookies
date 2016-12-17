@@ -1,13 +1,7 @@
-## todo
+# [ライデンの新人ブログ](https://ryden-inc.github.io/rookies/)
 
-- twitterの埋め込み修正
-- hxのスタイリング
-- `nojun.js`
-- iphoneで<pre>がscrollにならない
-- IE11
+## Todo
 
-- githubのソースへのリンク修正
 - `src/post/styleguide.md`の`updated`更新
-
-- document
-  - `<img>`、`<a>`のhref
+- README.md
+  - `<img>`要素、`<a>`要素のパスの扱い

@@ -11,11 +11,12 @@ author: yuhei
 
 ---
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">スタッキングコンテキストを生成しないほうがみんな（誰）安心する気がするから、こうしてもいいと思う。<a href="https://t.co/xU0ZOxH1Lf">https://t.co/xU0ZOxH1Lf</a></p>&mdash; 〓〓〓 (@o_ti) <a href="https://twitter.com/o_ti/status/768036161671483392">2016年8月23日</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">スタッキングコンテキストを生成しないほうがみんな（誰）安心する気がするから、こうしてもいいと思う。<a href="https://t.co/xU0ZOxH1Lf">https://t.co/xU0ZOxH1Lf</a></p>&mdash; 2017年タイポ選手権大会ファイナリスト (@o_ti) <a href="https://twitter.com/o_ti/status/768036161671483392">2016年8月23日</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-この実装は、`linear-gradient`でグラデーションさせずに単色の斜めになったイメージを表現することで、前回の記事で紹介したものよりも圧倒的にシンプルなコードになっています。ですが、この実装だとジャギって見えてしまうのがイマイチです。
+<p>この実装は、`linear-gradient`でグラデーションさせずに単色の斜めになったイメージを表現することで、前回の記事で紹介したものよりも圧倒的にシンプルなコードになっています。ですが、この実装だとジャギって見えてしまうのがイマイチです。</p>
 
----
+<hr>
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">SVGでやれ</p>&mdash; ながしまきょう (@hail2u\_) <a href="https://twitter.com/hail2u_/status/768036499992350720">2016年8月23日</a></blockquote>
 

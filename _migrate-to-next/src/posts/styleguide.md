@@ -24,8 +24,7 @@ author: yuhei
 
 ### 大きい画像
 
-画像を大きく表示します。  
-小さい画像の場合、引き伸ばして表示されます。
+画像を大きく表示します。コンテンツ幅より小さい画像の場合、中央寄せして表示されます。
 
 <figure class="large">![ニューヨークの高層ビル](/img/posts/styleguide/building.jpg)</figure>
 

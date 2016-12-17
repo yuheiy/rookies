@@ -10,7 +10,7 @@
   }
 
   &__author {
-    width: ($ratio * $ratio * $ratio * $ratio * 1rem); // todo: refactor
+    width: rem($ratio * $ratio * $ratio * $ratio); // todo: refactor
     margin-bottom: $margin-small;
 
     @media (min-width: $breakpoint-content) {

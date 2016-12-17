@@ -15,13 +15,16 @@ $margin-small: ($margin / $ratio);
 $margin-large: ($margin * $ratio);
 $margin-huge: ($margin * $ratio * $ratio);
 
+$indent: $margin;
+
 $line-height: $ratio;
 $line-height-tiny: ($ratio * 0.8);
 $line-height-small: ($ratio * 0.9);
 
 $width-content: 40rem;
+$width-gap: ($margin / 2);
 
-$breakpoint-content: ($width-content + $margin);
+$breakpoint-content: ($width-content + ($width-gap * 2));
 $breakpoint-full: ($breakpoint-content * $ratio-root-text-large);
 
 // color

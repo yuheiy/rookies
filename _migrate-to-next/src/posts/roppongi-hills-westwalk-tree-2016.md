@@ -30,7 +30,7 @@ LEDにはシリアル通信で制御可能なフルカラーLED、[WS2812B](http
 
 今回はボックスケースに、ピクセルコントローラーと電源（DC-DCコンバーター）、放熱用ファン、それにLEDに接続するための専用基板（今回のために設計した特注品です）を組み合わせています。ピクセルコントローラーは1台あたり16ポートあり、今回はこれを15台用意しています。
 
-<figure class="centered">![ピクセルコントローラー](/img/posts/roppongi-hills-westwalk-tree-2016/controller.jpg)</figure>
+<figure class="large">![ピクセルコントローラー](/img/posts/roppongi-hills-westwalk-tree-2016/controller.jpg)</figure>
 
 15台、240ポート分を制作するのはさすがに骨が折れました。配線にひたすら圧着端子をつける作業など、普段キーボードしか叩かない身にはつらいものがありましたが、ライデンのメンバー総出で制作し、何とか完成にこぎつけました。
 
@@ -49,6 +49,6 @@ LEDにはシリアル通信で制御可能なフルカラーLED、[WS2812B](http
 
 各ソフトウェアを評価して、今回は[xLights/Nutcracker](http://xlights.org/)を使用しました。xLightsは非常に高性能、かつ使い勝手の良いソフトウェアで、今回のプロジェクトはこのソフトとの出会いがなければ不可能だったと言っても過言ではありません。アートディレクションの内容をかなりの精度とスピード感で実装できました。
 
-<figure class="centered">![xLights](/img/posts/roppongi-hills-westwalk-tree-2016/xlights.png)</figure>
+<figure class="large">![xLights](/img/posts/roppongi-hills-westwalk-tree-2016/xlights.png)</figure>
 
 Roppongi Hills Artelligent Christmas 2016 ウェストウォーク イルミネーションは12月25日までご覧いただけます。お近くにおいでの際は、ぜひご覧ください。

@@ -12,7 +12,7 @@ Reactでページ（URL）間のアニメーションを直列に表現したい
 Webサイトとして凝った演出をしたいとき、URLをまたいだときの処理として、現在のページを離脱するときのアニメーションが終わった後、次のページが徐々に現れるという風にしたいです。  
 そのため、それらのアニメーションを直列に実行する必要があります。
 
-`ReactTransitionGroup`はアニメーションのためのAPIを提供していますが、それだけではやりたいことが実現できません。そのため、**それらをラップしてキューを管理するためのコンポーネント** を作ります。例えば、以下のように実装します。[全部飛ばしてソースを見たい人はここにあります。](https://github.com/ryden-inc/rookies/tree/master/source/_demos/react-sequentially-animation-between-pages)
+`ReactTransitionGroup`はアニメーションのためのAPIを提供していますが、それだけではやりたいことが実現できません。そのため、**それらをラップしてキューを管理するためのコンポーネント** を作ります。例えば、以下のように実装します。[全部飛ばしてソースを見たい人はここにあります。](https://github.com/ryden-inc/rookies/tree/master/src/demos/react-sequentially-animation-between-pages)
 
 まず、ロケーションの管理は以下のように行います。
 
@@ -201,7 +201,7 @@ class HomePage extends React.Component {
 
 Reactとあまり関係ありませんが、上の例で使用している[dynamics.js](http://dynamicsjs.com/)はオブジェクトの値を変化させるのに便利です。
 
-[この仕組みで実際に動いているデモ](/demos/react-sequentially-animation-between-pages/#/)と、[そのソース](https://github.com/ryden-inc/rookies/tree/master/source/_demos/react-sequentially-animation-between-pages)です。
+[この仕組みで実際に動いているデモ](/demos/react-sequentially-animation-between-pages/#/)と、[そのソース](https://github.com/ryden-inc/rookies/tree/master/src/demos/react-sequentially-animation-between-pages)です。
 
 ---
 

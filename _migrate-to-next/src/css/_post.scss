@@ -60,9 +60,20 @@
       }
     }
 
+    .large,
+    .drop-left,
+    .drop-right,
+    .centered,
+    .cover {
+      img {
+        vertical-align: middle;
+      }
+    }
+
     .large {
-      margin-right: (- ($margin / 2));
-      margin-left: (- ($margin / 2));
+      margin-right: (- $width-gap);
+      margin-left: (- $width-gap);
+      text-align: center;
 
       @media (min-width: $breakpoint-content) {
         margin: $margin-large calc((100vw - #{$width-content}) / 2 * -1);
@@ -72,19 +83,19 @@
         margin-right: (- $margin);
         margin-left: (- $margin);
       }
+    }
 
-      img {
-        width: 100%;
-      }
+    .large img {
+      max-width: 100%;
     }
 
     .drop-left {
       float: left;
       max-width: 50%;
-      margin: 0 $margin $margin-small (- ($margin / 2));
+      margin: 0 $margin $margin-small (- $width-gap);
 
       @media (min-width: $breakpoint-content) {
-        margin-left: calc((100vw - 40rem) / 2 * -1);
+        margin-left: calc((100vw - #{$width-content}) / 2 * -1);
       }
 
       @media (min-width: ($breakpoint-full + ($margin * 2))) {
@@ -95,10 +106,10 @@
     .drop-right {
       float: right;
       max-width: 50%;
-      margin: 0 (- ($margin / 2)) $margin-small $margin;
+      margin: 0 (- $width-gap) $margin-small $margin;
 
       @media (min-width: $breakpoint-content) {
-        margin-right: calc((100vw - 40rem) / 2 * -1);
+        margin-right: calc((100vw - #{$width-content}) / 2 * -1);
       }
 
       @media (min-width: ($breakpoint-full + ($margin * 2))) {
@@ -107,24 +118,23 @@
     }
 
     .centered {
-      display: flex;
-      justify-content: center;
       margin: 0 0 $margin-small;
+      text-align: center;
     }
 
     .cover {
-      margin: $margin-large (- ($margin / 2));
+      margin: $margin-large (- $width-gap);
 
       @media (min-width: $breakpoint-content) {
-        $m: calc((100vw - 40rem) / 2 * -1);
+        $m: calc((100vw - #{$width-content}) / 2 * -1);
 
         margin-right: $m;
         margin-left: $m;
       }
+    }
 
-      img {
-        width: 100%;
-      }
+    .cover img {
+      width: 100%;
     }
   }
 }

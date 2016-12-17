@@ -26,13 +26,13 @@
     target.addEventListener('click', handleClick)
   }
 
-  var Nojun = function(opts) {
+  var Nojun = function(startX, startY) {
     this.element = document.createElement('img')
     this.element.src = 'img/nojun.png'
     this.width = 64
     this.height = 64
-    this.x = opts.startX - (this.width / 2)
-    this.y = opts.startY - (this.height / 2)
+    this.x = startX - (this.width / 2)
+    this.y = startY - (this.height / 2)
     this.z = 180
     this.v = {
       x: Math.random() * 5 - 2.5,
@@ -45,9 +45,9 @@
     document.body.appendChild(this.element)
   }
 
-  Nojun.prototype.setSize = function(opts) {
-    this.stageWidth = opts.width
-    this.stageHeight = opts.height
+  Nojun.prototype.setSize = function(width, height) {
+    this.stageWidth = width
+    this.stageHeight = height
   }
 
   Nojun.prototype.destory = function() {
@@ -72,7 +72,6 @@
   }
 
   Nojun.prototype.render = function() {
-    console.log('render');
     var style = this.element.style
     style.position = 'fixed'
     style.top = 0
@@ -113,6 +112,15 @@
           }
         })
       }
+    })
+
+    window.addEventListener('resize', function() {
+      var width = window.innerWidth
+      var height = window.innerHeight
+
+      nojunList.forEach(function(nojun) {
+        nojun.setSize(width, height)
+      })
     })
   }
 

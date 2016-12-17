@@ -2,7 +2,6 @@ const Promise = require('bluebird')
 const path = require('path')
 const fs = Promise.promisifyAll(require('fs'))
 const mkdirp = Promise.promisifyAll(require('mkdirp'))
-const del = require('del')
 const gulp = require('gulp')
 const plugins = require('gulp-load-plugins')()
 const browserSync = require('browser-sync').create()
@@ -47,9 +46,7 @@ const posts = async () => {
       } catch (e) {
         return ''
       }
-      if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0) {
-        return ''
-      }
+      if (prot.startsWith('javascript:') || prot.startsWith('vbscript:')) return ''
     }
 
     // パスにサブディレクトリをprependする
@@ -208,6 +205,11 @@ export const xml = () =>
     .pipe(plugins.rename({extname: '.xml'}))
     .pipe(gulp.dest(path.join('dist', config.root)))
 
+const postTasks = gulp.series(
+  posts,
+  gulp.parallel(html, xml),
+)
+
 const css = () => {
   const AUTOPREXIER_BROWSERS = [
     'last 1 version',
@@ -230,19 +232,27 @@ const css = () => {
     .pipe(browserSync.stream({match: '**/*.css'}))
 }
 
-const img = () =>
-  gulp.src('src/img/**/*')
-    .pipe(gulp.dest(path.join('dist', config.root, 'img')))
+const img = () => {
+  const destDir = path.join('dist', config.root, 'img')
+
+  return gulp.src('src/img/**/*')
+    .pipe(plugins.changed(destDir))
+    .pipe(gulp.dest(destDir))
     .pipe(browserSync.stream())
     .pipe(plugins.imagemin())
-    .pipe(gulp.dest(path.join('dist', config.root, 'img')))
+    .pipe(gulp.dest(destDir))
+}
 
-const copy = () =>
-  gulp.src('src/static/**/*')
-    .pipe(gulp.dest(path.join('dist', config.root)))
+const copy = () => {
+  const destDir = path.join('dist', config.root)
+
+  return gulp.src('src/static/**/*')
+    .pipe(plugins.changed(destDir))
+    .pipe(gulp.dest(destDir))
     .pipe(browserSync.stream())
+}
 
-const clean = () => del('dist')
+const clean = () => require('del')('dist')
 
 const serve = done =>
   browserSync.init({
@@ -262,7 +272,7 @@ const serve = done =>
         if (filepath.endsWith('/')) filepath += 'index.html'
         const defaultBody = fs.readFileSync(path.join(filepath), 'utf8')
         const insertIndex = '<!DOCTYPE html>'.length
-        return res.end(defaultBody.substring(0, insertIndex) + '<script async src="/browser-sync/browser-sync-client.js"></script>' + defaultBody.substring(insertIndex))
+        return res.end(`${defaultBody.substring(0, insertIndex)}<script async src="/browser-sync/browser-sync-client.js"></script>${defaultBody.substring(insertIndex)}`)
       }
       next()
     },
@@ -270,11 +280,6 @@ const serve = done =>
     ghostMode: false,
     open: false,
   }, done)
-
-const postTasks = gulp.series(
-  posts,
-  gulp.parallel(html, xml),
-)
 
 const watch = done => {
   gulp.watch('src/posts/**/*.md', postTasks)

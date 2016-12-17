@@ -13,7 +13,7 @@
 }
 
 body {
-  margin: $margin ($margin / 2);
+  margin: $margin $width-gap;
   color: $color-black;
   background-color: $color-white;
 }
@@ -59,12 +59,10 @@ hr {
 }
 
 pre {
-  $gutter: ($margin / 2);
-
   clear: both;
-  margin: 0 (- $gutter) $margin;
-  padding-right: $gutter;
-  padding-left: $gutter;
+  margin: 0 (- $width-gap) $margin;
+  padding-right: $width-gap;
+  padding-left: $width-gap;
   overflow: auto;
   font-size: $ratio-text-small;
   line-height: $line-height-tiny;
@@ -84,13 +82,14 @@ pre {
   @media (min-width: ($breakpoint-full + ($margin * 2))) {
     margin-right: (- $margin);
     margin-left: (- $margin);
-    padding: ($margin / 2) $margin;
+    padding: $width-gap $margin;
   }
 }
 
 ol,
 ul {
   margin: 0 0 $margin;
+  padding-left: $indent;
 }
 
 figure {

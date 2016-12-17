@@ -28,7 +28,7 @@ author: yuhei
 1. CIがビルドしてGitHub Pagesにデプロイ
 
 というような簡単な仕組みです。  
-加えて、更新手順を迷わないように[簡単なガイドライン](https://github.com/ryden-inc/rookies/blob/master/README.md)を作りました。  
+加えて、更新手順を迷わないように[簡単なガイドライン](https://github.com/ryden-inc/rookies/blob/b5bf21efb1cdf1ebce79458a6c5bc42e51f3a5a0/README.md)を作りました。  
 既存の仕組みを上手く使うと、ちょっと面倒くさそうなこともごく簡単にできて便利です。
 
 ちなみに、静的サイトジェネレーターとしてJekyllを使うとさらに簡単です。  

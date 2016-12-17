@@ -1,7 +1,12 @@
 .content {
   max-width: $width-content;
   margin: $margin-huge auto;
-  text-align: justify;
   word-wrap: break-word; // for IE 11
   overflow-wrap: break-word;
+  text-align: justify;
+
+  pre {
+    word-wrap: normal;
+    overflow-wrap: normal;
+  }
 }

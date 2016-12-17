@@ -58,6 +58,6 @@ loadYoutubeAPI.then(function () {
 そのため、YouTube APIが読み込まれていなければその完了を待ち、読み込み済みであればそのまま実行する関数を定義することができます。  
 この方法を利用すれば、`script`要素の読み込みは１回しか実行されず、なおかつAPIの準備ができた段階で実行するという処理が簡単に書けます。
 
-[このパターンを利用したページの設計を、簡易的な例として用意しました。](https://github.com/ryden-inc/rookies/tree/master/source/_demos/use-youtube-iframe-player-api-in-large-website)
+[このパターンを利用したページの設計を、簡易的な例として用意しました。](https://github.com/ryden-inc/rookies/tree/master/src/demos/use-youtube-iframe-player-api-in-large-website)
 
 古い時代の問題も、新しい技術を用いて簡単に解決できるという身近な例でした。
