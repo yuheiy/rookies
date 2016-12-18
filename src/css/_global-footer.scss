@@ -7,6 +7,10 @@
   margin-left: auto;
   font-size: $ratio-text-small;
 
+  @media print {
+    display: none;
+  }
+
   &__copyright {
     margin: 0;
   }

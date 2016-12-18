@@ -25,6 +25,10 @@ body {
     z-index: -1;
     width: calc((100vw + 100vh) / 2);
     transform: translate(50%,50%) rotate(-45deg);
+
+    @media print {
+      display: none;
+    }
   }
 }
 
@@ -65,6 +69,11 @@ pre {
   line-height: $line-height-tiny;
   background-color: $color-black;
   color: $color-white;
+
+  @media print {
+    background-color: inherit;
+    color: inherit;
+  }
 
   @media (min-width: $breakpoint-content) {
     $m: calc((100vw - #{$width-content}) / 2 * -1);

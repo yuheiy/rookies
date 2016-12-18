@@ -26,6 +26,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: 50%;
+
+    @media print {
+      display: none;
+    }
   }
 
   &__author {

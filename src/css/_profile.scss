@@ -9,6 +9,12 @@
     flex-direction: row;
   }
 
+  @media print {
+    align-items: flex-end;
+    margin-top: 0;
+    margin-bottom: $margin;
+  }
+
   &__author {
     width: rem($ratio * $ratio * $ratio * $ratio); // todo: refactor
     margin-bottom: $margin-small;
@@ -16,6 +22,10 @@
     @media (min-width: $breakpoint-content) {
       flex: 1;
       margin-bottom: 0;
+    }
+
+    @media print {
+      display: none;
     }
   }
 
@@ -34,21 +44,32 @@
       align-items: stretch;
       margin-left: $margin-large;
     }
-
   }
 
   &__title {
     margin: 0;
     font-size: $ratio-text-small;
+
+    @media print {
+      display: none;
+    }
   }
 
   &__name {
     margin: 0 0 $margin-tiny;
     font-weight: bold;
+
+    @media print {
+      margin-bottom: 0;
+    }
   }
 
   &__description {
     margin: 0;
     font-size: $ratio-text-small;
+
+    @media print {
+      display: none;
+    }
   }
 }

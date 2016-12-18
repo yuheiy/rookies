@@ -6,6 +6,10 @@
   margin-right: auto;
   margin-left: auto;
 
+  @media print {
+    display: none;
+  }
+
   &__logo {
     margin: 0;
     font-size: $ratio-text;

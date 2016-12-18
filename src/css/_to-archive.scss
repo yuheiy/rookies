@@ -2,4 +2,8 @@
   a::before {
     content: "→ ";
   }
+
+  @media print {
+    display: none;
+  }
 }

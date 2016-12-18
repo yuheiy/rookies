@@ -2,6 +2,10 @@
   margin-top: ($margin-large - $margin-huge);
   margin-bottom: $margin-huge;
 
+  @media print {
+    display: none;
+  }
+
   ul {
     display: flex;
     justify-content: flex-end;

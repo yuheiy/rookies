@@ -5,6 +5,11 @@
   overflow-wrap: break-word;
   text-align: justify;
 
+  @media print {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   pre {
     word-wrap: normal;
     overflow-wrap: normal;
