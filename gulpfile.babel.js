@@ -142,6 +142,8 @@ const posts = async () => {
 const processHtml = (file, data) => {
   const {minify} = require('html-minifier')
   const result = minify(data, {
+    minifyCSS: true,
+    minifyJS: true,
     removeComments: true,
     collapseWhitespace: true,
     collapseBooleanAttributes: true,
@@ -241,15 +243,28 @@ const css = () => {
     .pipe(browserSync.stream({match: '**/*.css'}))
 }
 
+const js = () => {
+  const destDir = path.join('dist', config.root, 'js')
+
+  return gulp.src('src/js/**/*.js')
+    .pipe(plugins.changed(destDir))
+    .pipe(plugins.uglify({
+      mangle: true,
+      compress: true,
+      preserveComments: 'license',
+    }))
+    .pipe(gulp.dest(destDir))
+    .pipe(browserSync.stream())
+}
+
 const img = () => {
   const destDir = path.join('dist', config.root, 'img')
 
   return gulp.src('src/img/**/*')
     .pipe(plugins.changed(destDir))
-    .pipe(gulp.dest(destDir))
-    .pipe(browserSync.stream())
     .pipe(plugins.imagemin())
     .pipe(gulp.dest(destDir))
+    .pipe(browserSync.stream())
 }
 
 const copy = () => {
@@ -303,6 +318,7 @@ const watch = done => {
   gulp.watch('src/html/**/*', html)
   gulp.watch('src/xml/**/*.pug', xml)
   gulp.watch('src/css/**/*.scss', css)
+  gulp.watch('src/js/**/*.js', js)
   gulp.watch('src/img/**/*', img)
   gulp.watch('src/static/**/*', copy)
 
@@ -314,6 +330,7 @@ export const build = gulp.series(
   gulp.parallel(
     postTasks,
     css,
+    js,
     img,
     copy,
   ),

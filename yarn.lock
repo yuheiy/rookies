@@ -2425,6 +2425,19 @@ gulp-sourcemaps@^1.9.1:
     through2 "2.X"
     vinyl "1.X"
 
+gulp-uglify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-uglify/-/gulp-uglify-2.0.0.tgz#cbe4aae4fe0b6bdd760335bc46f200fff699c4af"
+  dependencies:
+    gulplog "^1.0.0"
+    has-gulplog "^0.1.0"
+    lodash "^4.13.1"
+    make-error-cause "^1.1.1"
+    through2 "^2.0.0"
+    uglify-js "2.7.0"
+    uglify-save-license "^0.4.1"
+    vinyl-sourcemaps-apply "^0.2.0"
+
 gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.1, gulp-util@^3.0.2, gulp-util@^3.0.6, gulp-util@^3.0.7:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.7.tgz#78925c4b8f8b49005ac01a011c557e6218941cbb"
@@ -3361,7 +3374,7 @@ lodash@^3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.2.0:
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.2.0:
   version "4.17.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
@@ -3430,6 +3443,16 @@ magic-string@^0.14.0:
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.14.0.tgz#57224aef1701caeed273b17a39a956e72b172462"
   dependencies:
     vlq "^0.2.1"
+
+make-error-cause@^1.1.1:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/make-error-cause/-/make-error-cause-1.2.2.tgz#df0388fcd0b37816dff0a5fb8108939777dcbc9d"
+  dependencies:
+    make-error "^1.2.0"
+
+make-error@^1.2.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.2.1.tgz#9a6dfb4844423b9f145806728d05c6e935670e75"
 
 map-cache@^0.2.0:
   version "0.2.2"
@@ -5169,6 +5192,15 @@ ua-parser-js@0.7.12:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
 
+uglify-js@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.0.tgz#f021e38ba2ca740860f5bd5c695c2a817345f0ec"
+  dependencies:
+    async "~0.2.6"
+    source-map "~0.5.1"
+    uglify-to-browserify "~1.0.0"
+    yargs "~3.10.0"
+
 uglify-js@2.7.x, uglify-js@^2.6.1:
   version "2.7.5"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
@@ -5177,6 +5209,10 @@ uglify-js@2.7.x, uglify-js@^2.6.1:
     source-map "~0.5.1"
     uglify-to-browserify "~1.0.0"
     yargs "~3.10.0"
+
+uglify-save-license@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/uglify-save-license/-/uglify-save-license-0.4.1.tgz#95726c17cc6fd171c3617e3bf4d8d82aa8c4cce1"
 
 uglify-to-browserify@~1.0.0:
   version "1.0.2"

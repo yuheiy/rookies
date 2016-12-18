@@ -29,6 +29,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
+    "gulp-uglify": "^2.0.0",
     "html-minifier": "^3.2.3",
     "marked": "^0.3.6",
     "mkdirp": "^0.5.1",
