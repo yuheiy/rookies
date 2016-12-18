@@ -228,8 +228,7 @@ const css = () => {
     '> 5% in JP',
   ]
 
-  return gulp.src('src/css/index.scss')
-    .pipe(plugins.rename({basename: 'ryden'}))
+  return gulp.src('src/css/ryden.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass().on('error', plugins.sass.logError))
     .pipe(plugins.autoprefixer({
@@ -237,9 +236,7 @@ const css = () => {
       cascade: false,
     }))
     .pipe(plugins.cssnano())
-    .pipe(plugins.sourcemaps.write('.', {
-      destPath: 'ryden.css',
-    }))
+    .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(path.join('dist', config.root, 'css')))
     .pipe(browserSync.stream({match: '**/*.css'}))
 }
