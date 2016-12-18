@@ -1,7 +1,7 @@
 ---
 title: 記事作成のためのスタイルガイド
 date: 2016/08/17 12:42:48
-updated: 2016/12/18 00:54:06
+updated: 2016/12/19 02:08:48
 author: yuhei
 ---
 このブログの記事を作成するためのスタイルガイドを掲載します。
@@ -24,9 +24,9 @@ author: yuhei
 
 ### 大きい画像
 
-画像を大きく表示します。コンテンツ幅より小さい画像の場合、中央寄せして表示されます。
-
 <figure class="large">![ニューヨークの高層ビル](/img/posts/styleguide/building.jpg)</figure>
+
+画像を大きく表示します。コンテンツ幅より小さい画像の場合、中央寄せして表示されます。
 
 ```markdown
 <figure class="large">![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
@@ -64,9 +64,9 @@ author: yuhei
 
 ### ウィンドウ幅いっぱいの画像
 
-ウィンドウの幅いっぱいまで画像が引き伸ばして表示されます。画像が小さい場合は拡大されます。できるだけ横の比率が高い画像を利用してください。
-
 <figure class="cover">![謎のかっこいい鳥](/img/posts/styleguide/bird.jpg)</figure>
+
+ウィンドウの幅いっぱいまで画像が引き伸ばして表示されます。画像が小さい場合は拡大されます。できるだけ横の比率が高い画像を利用してください。
 
 ```markdown
 <figure class="cover">![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
@@ -74,9 +74,9 @@ author: yuhei
 
 ### 普通の画像
 
-上記に使いたいスタイルがない場合に利用してください。コンテンツ幅が画像の最大幅になります。
-
 <figure>![なんかかっこいいビル](/img/posts/styleguide/building2.jpg)</figure>
+
+上記に使いたいスタイルがない場合に利用してください。コンテンツ幅が画像の最大幅になります。
 
 ```markdown
 <figure>![altに入る文字](/img/posts/post-slug-name/image-file-name.ext)</figure>
