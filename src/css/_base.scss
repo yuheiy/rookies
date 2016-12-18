@@ -16,29 +16,26 @@ body {
   margin: $margin $width-gap;
   color: $color-black;
   background-color: $color-white;
+
+  &::before {
+    content: image("ryden.svg");
+    position: fixed;
+    right: 50%;
+    bottom: 50%;
+    z-index: -1;
+    width: calc((100vw + 100vh) / 2);
+    transform: translate(50%,50%) rotate(-45deg);
+  }
 }
 
-body::before {
-  content: image("ryden.svg");
-  position: fixed;
-  right: 50%;
-  bottom: 50%;
-  z-index: -1;
-  width: calc((100vw + 100vh) / 2);
-  transform: translate(50%,50%) rotate(-45deg);
+h1,
+h2,
+h3 {
+  line-height: $line-height-tiny;
 }
 
 h1 {
   font-size: $ratio-text-large;
-  line-height: $line-height-tiny;
-}
-
-h2 {
-  line-height: $line-height-tiny;
-}
-
-h3 {
-  line-height: $line-height-tiny;
 }
 
 p {
@@ -46,8 +43,8 @@ p {
 }
 
 hr {
-  margin: $margin-large 0;
   clear: both;
+  margin: $margin-large 0;
   line-height: 1;
   color: $color-gray;
   text-align: center;

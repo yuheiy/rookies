@@ -10,8 +10,8 @@
     text-indent: (- $indent);
   }
 
-  &__next {
-    margin-bottom: $margin;
+  &__next + &__prev {
+    margin-top: $margin;
   }
 
   &__next::before,
