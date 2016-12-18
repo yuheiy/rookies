@@ -5,38 +5,42 @@ const mkdirp = Promise.promisifyAll(require('mkdirp'))
 const gulp = require('gulp')
 const plugins = require('gulp-load-plugins')()
 const browserSync = require('browser-sync').create()
+const marked = require('marked')
 const config = require('./config.json')
 const authors = require('./authors.json')
 
 const utilFuncs = {
   urlFor: relativePath => path.join(config.root, relativePath),
   toIsoTime: date => new Date(date).toISOString(),
-  toDisplayDate: (date, format) => require('moment')(new Date(date)).format(format),
+  toDisplayDate: (date, format) => {
+    const moment = require('moment')
+    return moment(new Date(date)).format(format)
+  },
   stripHtml: require('striptags'),
 }
 
-const posts = async () => {
-  const frontMatter = require('front-matter')
-  const marked = require('marked')
-  const cheerio = require('cheerio')
+const renderer = (() => {
+  // https://github.com/chjj/marked/blob/master/lib/marked.js#L1096-L1108
+  function unescape(html) {
+    // explicitly match decimal, hex, and named HTML entities
+    return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
+      n = n.toLowerCase();
+      if (n === 'colon') return ':';
+      if (n.charAt(0) === '#') {
+        return n.charAt(1) === 'x'
+          ? String.fromCharCode(parseInt(n.substring(2), 16))
+          : String.fromCharCode(+n.substring(1));
+      }
+      return '';
+    });
+  }
 
   const renderer = new marked.Renderer()
-  renderer.link = (href, title, text) => {
-    // https://github.com/chjj/marked/blob/master/lib/marked.js#L1096-L1108
-    function unescape(html) {
-    	// explicitly match decimal, hex, and named HTML entities
-      return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
-        n = n.toLowerCase();
-        if (n === 'colon') return ':';
-        if (n.charAt(0) === '#') {
-          return n.charAt(1) === 'x'
-            ? String.fromCharCode(parseInt(n.substring(2), 16))
-            : String.fromCharCode(+n.substring(1));
-        }
-        return '';
-      });
-    }
 
+  renderer.heading = (text, level, raw) =>
+    `<h${level} id="${renderer.options.headerPrefix}${raw.toLowerCase()}">${text}</h${level}>\n`
+
+  renderer.link = (href, title, text) => {
     if (renderer.options.sanitize) {
       let prot
       try {
@@ -54,12 +58,20 @@ const posts = async () => {
 
     return `<a href="${href}"${title ? ` title="${title}"` : ''}>${text}</a>`
   }
+
   renderer.image = (href, title, alt) => {
     // パスにサブディレクトリをprependする
     if (/^\/(\w|-|\.|~)+/.test(href)) href = href.replace('/', config.root)
 
     return `<img src="${href}" alt="${alt}"${title ? ` title="${title}"` : ''}${renderer.options.xhtml ? '/>' : '>'}`
   }
+
+  return renderer
+})()
+
+const posts = async () => {
+  const frontMatter = require('front-matter')
+  const cheerio = require('cheerio')
   const markedOpts = {renderer}
   const excerptPattern = /<!-- *more *-->/
   const postDir = 'src/posts'
@@ -252,7 +264,10 @@ const copy = () => {
     .pipe(browserSync.stream())
 }
 
-const clean = () => require('del')('dist')
+const clean = () => {
+  const del = require('del')
+  return del('dist')
+}
 
 const serve = done =>
   browserSync.init({
@@ -266,13 +281,18 @@ const serve = done =>
         pathname === path.join(config.root, 'index.html') ||
         pathname === path.join(config.root, 'posts/') ||
         pathname === path.join(config.root, 'posts/index.html') ||
-        new RegExp(`^${path.join(config.root, 'posts/').replace(/\//g, '\\\/')}(\\w|-)*\.html$`).test(pathname) // `/:root/posts/post-title-like-this.html`
+        new RegExp(`^${path.join(config.root, 'posts/').replace(/\//g, '\\\/')}(\\w|-)*\.html$`)
+          .test(pathname) // `/:root/posts/post-title-like-this.html`
       ) {
         let filepath = path.join('dist', pathname)
         if (filepath.endsWith('/')) filepath += 'index.html'
         const defaultBody = fs.readFileSync(path.join(filepath), 'utf8')
         const insertIndex = '<!DOCTYPE html>'.length
-        return res.end(`${defaultBody.substring(0, insertIndex)}<script async src="/browser-sync/browser-sync-client.js"></script>${defaultBody.substring(insertIndex)}`)
+        return res.end([
+          defaultBody.substring(0, insertIndex),
+          '<script async src="/browser-sync/browser-sync-client.js"></script>',
+          defaultBody.substring(insertIndex),
+        ].join(''))
       }
       next()
     },
