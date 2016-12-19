@@ -48,7 +48,7 @@
 
   &__title {
     margin: 0;
-    font-size: $ratio-text-small;
+    font-size: rem($ratio-text-small);
 
     @media print {
       display: none;
@@ -66,7 +66,7 @@
 
   &__description {
     margin: 0;
-    font-size: $ratio-text-small;
+    font-size: rem($ratio-text-small);
 
     @media print {
       display: none;

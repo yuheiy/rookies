@@ -12,7 +12,7 @@
 
   &__logo {
     margin: 0;
-    font-size: $ratio-text;
+    font-size: rem($ratio-text);
   }
 
   &__logo a {
@@ -22,7 +22,7 @@
 
   &__brand {
     margin-left: $margin;
-    font-size: $ratio-text-small;
+    font-size: rem($ratio-text-small);
   }
 
   &__brand a {

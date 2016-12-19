@@ -1,5 +1,6 @@
 :root {
   font-family: $font-stack-ui;
+  font-size: percentage($ratio-text-root);
   font-feature-settings: "kern" 1;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
@@ -7,8 +8,12 @@
   line-height: $line-height;
   text-rendering: optimizeLegibility;
 
+  @media (min-width: $breakpoint-large) {
+    font-size: percentage($ratio-text-root-large);
+  }
+
   @media (min-width: $breakpoint-full) {
-    font-size: percentage($ratio-root-text-large);
+    font-size: percentage($ratio-text-root-full);
   }
 }
 
@@ -39,7 +44,7 @@ h3 {
 }
 
 h1 {
-  font-size: $ratio-text-large;
+  font-size: rem($ratio-text-large);
 }
 
 p {
@@ -65,7 +70,7 @@ pre {
   padding-right: $width-gap;
   padding-left: $width-gap;
   overflow: auto;
-  font-size: $ratio-text-small;
+  font-size: rem($ratio-text-small);
   line-height: $line-height-tiny;
   background-color: $color-black;
   color: $color-white;

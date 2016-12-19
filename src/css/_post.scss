@@ -11,15 +11,15 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: $ratio-text-small;
+    font-size: rem($ratio-text-small);
   }
 
   &__avatar {
-    $scale: $ratio-text-large / $ratio-text-small;
+    $scale: ($ratio-text-large / $ratio-text-small);
 
-    width: $ratio-text-small;
-    height: $ratio-text-small;
-    margin-right: ($ratio-text-small * ($scale - 1) + $margin-tiny);
+    width: rem($ratio-text-small);
+    height: rem($ratio-text-small);
+    margin-right: (rem($ratio-text-small * ($scale - 1)) + $margin-tiny);
     transform: scale($scale);
     transform-origin: left center;
     background-position: center center;

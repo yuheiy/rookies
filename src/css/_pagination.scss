@@ -20,7 +20,7 @@
 
   &__next::before,
   &__prev::before {
-    font-size: $ratio-text-small;
+    font-size: rem($ratio-text-small);
     white-space: pre;
   }
 
