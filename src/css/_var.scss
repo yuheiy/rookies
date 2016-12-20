@@ -8,7 +8,6 @@ $ratio-text-small: ($ratio-text-secondary / $ratio);
 $ratio-text-large: $ratio-text-secondary;
 
 $ratio-text-root: $ratio-text;
-$ratio-text-root-large: ($ratio-text + (($ratio-text-large - $ratio-text) / 3));
 $ratio-text-root-full: ($ratio-text + (($ratio-text-large - $ratio-text) / 2));
 
 $line-height: $ratio;
@@ -27,7 +26,6 @@ $width-content: 40rem;
 $width-gap: ($margin / 2);
 
 $breakpoint-content: ($width-content + ($width-gap * 2));
-$breakpoint-large: ($breakpoint-content * $ratio-text-root-large);
 $breakpoint-full: ($breakpoint-content * $ratio-text-root-full);
 
 // color

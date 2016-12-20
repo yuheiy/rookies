@@ -8,10 +8,6 @@
   line-height: $line-height;
   text-rendering: optimizeLegibility;
 
-  @media (min-width: $breakpoint-large) {
-    font-size: percentage($ratio-text-root-large);
-  }
-
   @media (min-width: $breakpoint-full) {
     font-size: percentage($ratio-text-root-full);
   }
