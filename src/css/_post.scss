@@ -64,14 +64,8 @@
       }
     }
 
-    .large,
-    .drop-left,
-    .drop-right,
-    .centered,
-    .cover {
-      img {
-        vertical-align: middle;
-      }
+    figure img {
+      vertical-align: middle;
     }
 
     .large {
