@@ -135,4 +135,16 @@
       width: 100%;
     }
   }
+
+  &__read-more {
+    font-size: rem($ratio-text-small);
+    color: $color-gray;
+    text-decoration: underline;
+  }
+
+  &__link:hover &__read-more,
+  &__link:active &__read-more,
+  &__link:focus &__read-more {
+    text-decoration: none;
+  }
 }

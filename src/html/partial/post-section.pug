@@ -13,8 +13,11 @@ mixin _post-section-inner(post, isSinglePost)
         p.profile__title= post.author.title
         p.profile__name= post.author.name
         p.profile__description= post.author.description
-  if currentPath !== '/posts/'
-    div.post__content!= isSinglePost ? post.content : post.excerpt
+  if isSinglePost
+    div.post__content!= post.content
+  else if currentPath === '/'
+    div.post__content!= post.excerpt
+    div.post__read-more 続きを読む。
 
 mixin post-section(post, isSinglePost)
   section.post
