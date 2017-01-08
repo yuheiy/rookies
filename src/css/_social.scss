@@ -18,9 +18,15 @@
     margin-left: $margin-tiny;
   }
 
+  a {
+    display: block;
+    padding: rem((3 - $ratio) / 2);
+  }
+
   svg {
     $size: rem($ratio);
 
+    display: block;
     width: $size;
     height: $size;
   }

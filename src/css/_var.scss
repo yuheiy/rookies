@@ -10,6 +10,7 @@ $ratio-text-large: $ratio-text-secondary;
 $ratio-text-root: $ratio-text;
 $ratio-text-root-full: ($ratio-text + (($ratio-text-large - $ratio-text) / 2));
 
+// size
 $line-height: $ratio;
 $line-height-tiny: ($ratio * 0.8);
 $line-height-small: ($ratio * 0.9);

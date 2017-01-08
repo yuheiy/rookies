@@ -5,6 +5,8 @@
   max-width: $width-content;
   margin-right: auto;
   margin-left: auto;
+  padding-right: $width-gap;
+  padding-left: $width-gap;
   font-size: rem($ratio-text-small);
 
   @media print {
