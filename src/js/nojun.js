@@ -1,128 +1,129 @@
-(function() {
-  'use strict'
-
-  var handleTripleClick = function(target, callback) {
-    var TRIPLE_CLICK_COUNT = 3
-    var CLICK_INTERVAL_DELAY = 400
-
-    var clickCount = 0
-    var clickTimeout = null
-    var handleClick = function() {
-      var context = this
-      var args = arguments
-
-      if (++clickCount === TRIPLE_CLICK_COUNT) {
-        callback.apply(context, args)
-        clearTimeout(clickTimeout)
-        clickCount = 0
-      } else {
-        clearTimeout(clickTimeout)
-        clickTimeout = setTimeout(function() {
-          clickCount = 0
-        }, CLICK_INTERVAL_DELAY)
-      }
-    }
-
-    target.addEventListener('click', handleClick)
+class Stage {
+  constructor(container) {
+    this._container = container
+    this._nojunList = []
   }
 
-  var Nojun = function(startX, startY) {
+  setSize() {
+    this._stageWidth = window.innerWidth
+    this._stageHeight = window.innerHeight
+  }
+
+  addChild(nojun) {
+    this._nojunList.push(nojun)
+    this._container.appendChild(nojun.element)
+  }
+
+  removeChild(nojun) {
+    const index = this._nojunList.indexOf(nojun)
+    this._nojunList.splice(index, 1)
+    this._container.removeChild(nojun.element)
+  }
+
+  update() {
+    this._nojunList.forEach(nojun => {
+      nojun.updatePosition()
+    })
+  }
+
+  removeNonVisibleChildren() {
+    this._nojunList
+      .filter(nojun => !nojun.isVisible(this._stageWidth, this._stageHeight))
+      .forEach(nojun => this.removeChild(nojun))
+  }
+
+  render() {
+    this._nojunList.forEach(nojun => {
+      nojun.render()
+    })
+  }
+}
+
+class Nojun {
+  constructor(startX, startY) {
     this.element = document.createElement('img')
     this.element.src = 'img/nojun.png'
-    this.width = 64
-    this.height = 64
-    this.x = startX - (this.width / 2)
-    this.y = startY - (this.height / 2)
-    this.z = 180
-    this.v = {
+    this._width = 64
+    this._height = 64
+    this._x = startX - (this._width / 2)
+    this._y = startY - (this._height / 2)
+    this._z = 180
+    this._v = {
       x: Math.random() * 5 - 2.5,
       y: Math.random() * 5 - 2.5,
-      z: Math.random() * 29 + 1
-    }
-    this.stageWidth = window.innerWidth
-    this.stageHeight = window.innerHeight
-    this.isVisible = true
-    document.body.appendChild(this.element)
-  }
-
-  Nojun.prototype.setSize = function(width, height) {
-    this.stageWidth = width
-    this.stageHeight = height
-  }
-
-  Nojun.prototype.destory = function() {
-    this.isVisible = false
-    document.body.removeChild(this.element)
-  }
-
-  Nojun.prototype.updatePosition = function() {
-    this.x += this.v.x
-    this.y += this.v.y
-    this.z += this.v.z
-    if (360 <= this.z) this.z -= 360
-
-    var elementSize = Math.max(this.width, this.height) * Math.sqrt(2)
-
-    if (
-      this.x >= this.stageWidth || this.x + elementSize <= 0 ||
-      this.y >= this.stageHeight || this.y + elementSize <= 0
-    ) {
-      this.destory()
+      z: Math.random() * 29 + 1,
     }
   }
 
-  Nojun.prototype.render = function() {
-    var style = this.element.style
+  updatePosition() {
+    this._x += this._v.x
+    this._y += this._v.y
+    this._z += this._v.z
+    if (360 <= this._z) this._z -= 360
+  }
+
+  isVisible(stageWidth, stageHeight) {
+    const size = Math.max(this._width, this._height)
+    const elementSize = size * Math.sqrt(2)
+    const centerX = this._x + (size / 2)
+    const x = centerX - (elementSize / 2)
+    const x2 = centerX + (elementSize / 2)
+    const centerY = this._y + (size / 2)
+    const y = centerY - (elementSize / 2)
+    const y2 = centerY + (elementSize / 2)
+
+    return x2 > 0 && x < stageWidth &&
+      y2 > 0 && y < stageHeight
+  }
+
+  render() {
+    this.element.removeAttribute('style')
+
+    const {style} = this.element
     style.position = 'fixed'
     style.top = 0
     style.left = 0
-    style.transform =
-      'translate(' + this.x + 'px,' + this.y + 'px) rotate(' + this.z + 'deg)'
+    style.transform = `translate(${this._x}px, ${this._y}px) rotate(${this._z}deg)`
     style.pointerEvents = 'none'
   }
+}
 
-  var init = function() {
-    var nojunList = []
-    var requestId = null
-    var logo = document.querySelector('.global-header__logo')
-    var clickableElement = document.createElement('span')
-    clickableElement.appendChild(logo.firstChild)
-    logo.appendChild(clickableElement)
+const handleTripleClick = (target, listener) => {
+  const CLICK_INTERVAL_DELAY = 400
+  let clickCount = 0
+  let clickTimeout = null
 
-    handleTripleClick(clickableElement, function(event) {
-      var nojun = new Nojun(event.clientX, event.clientY)
-      nojunList.push(nojun)
-
-      if (!requestId) {
-        requestId = requestAnimationFrame(function loop() {
-          nojunList.forEach(function(nojun, i, arr) {
-            nojun.updatePosition()
-
-            if (nojun.isVisible) {
-              nojun.render()
-            } else {
-              arr.splice(i, 1)
-            }
-          })
-
-          if (nojunList.length) {
-            requestId = requestAnimationFrame(loop)
-          } else {
-            requestId = null
-          }
-        })
-      }
-    })
-
-    window.addEventListener('resize', function() {
-      var width = window.innerWidth
-      var height = window.innerHeight
-
-      nojunList.forEach(function(nojun) {
-        nojun.setSize(width, height)
-      })
-    })
+  const handleClick = (...args) => {
+    if (++clickCount === 3) {
+      listener(...args)
+      clearTimeout(clickTimeout)
+      clickCount = 0
+    } else {
+      clearTimeout(clickTimeout)
+      clickTimeout = setTimeout(() => clickCount = 0, CLICK_INTERVAL_DELAY)
+    }
   }
 
-  init()
-})();
+  target.addEventListener('click', handleClick)
+}
+
+const initNojun = target => {
+  const stage = new Stage(document.body)
+  stage.setSize()
+
+  handleTripleClick(target, e => {
+    const nojun = new Nojun(e.clientX, e.clientY)
+    stage.addChild(nojun)
+  })
+
+  window.addEventListener('resize', () => stage.setSize())
+
+  requestAnimationFrame(function tick() {
+    requestAnimationFrame(tick)
+    stage.update()
+    stage.render()
+    stage.removeNonVisibleChildren()
+  })
+}
+
+export default initNojun

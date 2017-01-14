@@ -16,7 +16,7 @@ Webサイトとして凝った演出をしたいとき、URLをまたいだと�
 
 まず、ロケーションの管理は以下のように行います。
 
-```javascript
+```jsx
 const React = require('react');
 const {render} = require('react-dom');
 const history = require('./history'); // instance of history
@@ -43,7 +43,7 @@ URLの変更があると、Reactのコンポーネントに対して`location`�
 
 キューを溜めるための機構として[mizchi/promised-reducer](https://github.com/mizchi/promised-reducer)を、子のコンポーネントとやり取りするためにEventEmitterを利用します。
 
-```javascript
+```jsx
 const {EventEmitter} = require('events');
 const React = require('react');
 const TransitionGroup = require('react-addons-transition-group');
@@ -124,7 +124,7 @@ URL遷移時
 
 それぞれのURLに対応するコンポーネントの実装として以下のようなイメージです。
 
-```javascript
+```jsx
 const React = require('react');
 const dynamics = require('dynamics.js');
 

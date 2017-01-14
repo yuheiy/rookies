@@ -20,7 +20,7 @@ author: yuhei
 
 それぞれのページ（URL）に対応するファイルは、全て以下の例のようにして作成します。
 
-```
+```jade
 doctype html
 html(lang= lang)
   include partial/head
@@ -75,7 +75,7 @@ const locals = {
 
 ## ディレクトリ構成
 
-```
+```bash
 .
 └── src/
     └── html/

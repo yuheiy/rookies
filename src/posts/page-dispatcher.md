@@ -70,7 +70,7 @@ window.run = dispatcher.run.bind(dispatcher);
 
 このディスパッチャーはGitHubに公開して、npmにも公開しています。
 
-```
+```bash
 $ npm install @yuheiy/page-dispatcher
 ```
 

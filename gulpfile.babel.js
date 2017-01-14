@@ -6,8 +6,12 @@ const gulp = require('gulp')
 const plugins = require('gulp-load-plugins')()
 const browserSync = require('browser-sync').create()
 const marked = require('marked')
+const webpack = require('webpack')
+const webpackConfig = require('./webpack.config.js')
 const config = require('./config.json')
 const authors = require('./authors.json')
+
+const isRelease = process.argv.includes('--release')
 
 const utilFuncs = {
   urlFor: relativePath => path.join(config.root, relativePath),
@@ -141,7 +145,7 @@ const posts = async () => {
 
 const processHtml = (file, data) => {
   const {minify} = require('html-minifier')
-  const result = minify(data, {
+  const result = isRelease ? minify(data, {
     minifyCSS: true,
     minifyJS: true,
     removeComments: true,
@@ -153,7 +157,7 @@ const processHtml = (file, data) => {
     removeScriptTypeAttributes: true,
     removeStyleLinkTypeAttributes: true,
     removeOptionalTags: true,
-  })
+  }) : data
   return fs.writeFileAsync(file, result)
 }
 
@@ -233,28 +237,32 @@ const css = () => {
   return gulp.src('src/css/ryden.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass().on('error', plugins.sass.logError))
-    .pipe(plugins.autoprefixer({
-      browsers: AUTOPREXIER_BROWSERS,
-      cascade: false,
-    }))
-    .pipe(plugins.cssnano())
+    .pipe(plugins.postcss([
+      require('autoprefixer')({
+        browsers: AUTOPREXIER_BROWSERS,
+        cascade: false,
+      }),
+      ...(isRelease ? [
+        require('css-mqpacker')(),
+        require('csswring')(),
+      ] : []),
+    ]))
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(path.join('dist', config.root, 'css')))
     .pipe(browserSync.stream({match: '**/*.css'}))
 }
 
-const js = () => {
-  const destDir = path.join('dist', config.root, 'js')
+const jsCompiler = webpack(webpackConfig)
 
-  return gulp.src('src/js/**/*.js')
-    .pipe(plugins.changed(destDir))
-    .pipe(plugins.uglify({
-      mangle: true,
-      compress: true,
-      preserveComments: 'license',
+const js = done => {
+  jsCompiler.run((err, stats) => {
+    if (err) throw new gutil.PluginError('webpack:build', err)
+    plugins.util.log('[webpack:build]', stats.toString({
+      colors: true,
     }))
-    .pipe(gulp.dest(destDir))
-    .pipe(browserSync.stream())
+    browserSync.reload()
+    done()
+  })
 }
 
 const img = () => {
@@ -262,7 +270,7 @@ const img = () => {
 
   return gulp.src('src/img/**/*')
     .pipe(plugins.changed(destDir))
-    .pipe(plugins.imagemin())
+    .pipe(plugins.if(isRelease, plugins.imagemin()))
     .pipe(gulp.dest(destDir))
     .pipe(browserSync.stream())
 }
@@ -285,29 +293,6 @@ const serve = done =>
   browserSync.init({
     notify: false,
     server: 'dist',
-    middleware(req, res, next) {
-      // `html-minifier`使うと`browserSync`のスクリプトが挿入されないので自力でやる
-      const {pathname} = require('url').parse(req.url)
-      if (
-        pathname === config.root ||
-        pathname === path.join(config.root, 'index.html') ||
-        pathname === path.join(config.root, 'posts/') ||
-        pathname === path.join(config.root, 'posts/index.html') ||
-        new RegExp(`^${path.join(config.root, 'posts/').replace(/\//g, '\\\/')}(\\w|-)*\.html$`)
-          .test(pathname) // `/:root/posts/post-title-like-this.html`
-      ) {
-        let filepath = path.join('dist', pathname)
-        if (filepath.endsWith('/')) filepath += 'index.html'
-        const defaultBody = fs.readFileSync(path.join(filepath), 'utf8')
-        const insertIndex = '<!DOCTYPE html>'.length
-        return res.end([
-          defaultBody.substring(0, insertIndex),
-          '<script async src="/browser-sync/browser-sync-client.js"></script>',
-          defaultBody.substring(insertIndex),
-        ].join(''))
-      }
-      next()
-    },
     startPath: config.root,
     ghostMode: false,
     open: false,

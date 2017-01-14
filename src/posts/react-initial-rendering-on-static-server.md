@@ -18,7 +18,7 @@ Reactはサーバーサイドでも実行可能で、サーバーサイドで初
 
 まず、開発用ファイルの構成は以下のようになります。
 
-```
+```bash
 .
 ├── dist
 │   ├── about.html
@@ -63,7 +63,7 @@ Reactはサーバーサイドでも実行可能で、サーバーサイドで初
 
 `src/js/router.js`では、ページに対応するコンポーネントのルーティングを行うために、サーバーとクライアントで共有するルーターを以下のように実装しています。
 
-```javascript
+```jsx
 const path = require('path')
 
 const baseTitle = 'Site Title'
@@ -81,7 +81,7 @@ export default class Router {
 
 クライアント固有のファイルとしては、`pushState`のラッパーである[history](https://github.com/mjackson/history)をシングルトンみたいに扱うためのファイル（`src/js/history.js`）と、クライアントのエントリーポイント（`src/js/index.js`）があります。
 
-```javascript
+```jsx
 import createHistory from 'history/createBrowserHistory'
 
 const isBrowser = typeof window !== 'undefined'
@@ -122,7 +122,7 @@ onLocationChange(history.location)
 
 サーバー側、つまり静的HTMLを生成するためのファイルとしては、Pugのテンプレートファイル（`src/template.pug`）と、全てのルートに対応するHTMLを生成するためのスクリプト（`prerender.js`）があります。
 
-```pug
+```jade
 doctype html
 html
   head
@@ -133,7 +133,7 @@ html
     script(src="app.js")
 ```
 
-```javascript
+```jsx
 import Router from './src/js/router.js'
 import routes from './src/routes.json'
 import Root from './src/js/components/root.js'

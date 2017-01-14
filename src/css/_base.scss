@@ -60,15 +60,15 @@ hr {
   }
 }
 
-pre {
+// override styles of `prism.js`
+html:root pre {
   clear: both;
   margin: 0 (- $width-gap) $margin;
   padding: ($width-gap / 2) $width-gap;
   overflow: auto;
   font-size: rem($ratio-text-small);
   line-height: $line-height-tiny;
-  background-color: $color-black;
-  color: $color-white;
+  border-radius: 0;
 
   @media print {
     background-color: inherit;
@@ -90,6 +90,10 @@ pre {
     margin-left: (- $margin);
     padding-right: $margin;
     padding-left: $margin;
+  }
+
+  code {
+    line-height: inherit;
   }
 }
 
