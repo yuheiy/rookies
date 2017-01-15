@@ -77,8 +77,6 @@ class Nojun {
   }
 
   render() {
-    this.element.removeAttribute('style')
-
     const {style} = this.element
     style.position = 'fixed'
     style.top = 0
@@ -107,7 +105,16 @@ const handleTripleClick = (target, listener) => {
   target.addEventListener('click', handleClick)
 }
 
-const initNojun = target => {
+const loadImage = imagePath => new Promise(resolve => {
+  const image = new Image()
+  image.addEventListener('load', resolve)
+  image.src = imagePath
+})
+
+const initNojun = async target => {
+  // preload
+  await loadImage('img/nojun.png')
+
   const stage = new Stage(document.body)
   stage.setSize()
 

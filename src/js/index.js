@@ -3,7 +3,8 @@ const modules = new Map()
 modules.set('highlight', async () => {
   if (!document.querySelector('pre')) return
 
-  const Prism = await import('prismjs')
+  await import('prismjs')
+  // global Prism
 
   await Promise.all([
     import('prismjs/components/prism-bash.js'),
@@ -19,13 +20,13 @@ modules.set('highlight', async () => {
 })
 
 modules.set('nojun', async () => {
-  const logo = document.querySelector('.global-header__logo')
   const clickableElement = document.createElement('span')
-  clickableElement.appendChild(logo.firstChild)
-  logo.appendChild(clickableElement)
-
+  const logo = document.querySelector('.global-header__logo')
   const {default: initNojun} = await import('./nojun.js')
+
+  while (logo.firstChild) clickableElement.appendChild(logo.firstChild)
   initNojun(clickableElement)
+  logo.appendChild(clickableElement)
 })
 
 const run = map => {
