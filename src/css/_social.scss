@@ -1,4 +1,7 @@
 .social {
+  $icon-size: (16px * $ratio);
+  $icon-size-full: ($icon-size * $ratio-text-root-full);
+
   margin-top: ($margin-large - $margin-huge);
   margin-bottom: $margin-huge;
 
@@ -20,15 +23,22 @@
 
   a {
     display: block;
-    padding: rem((3 - $ratio) / 2);
+    padding: ((48px - $icon-size) / 2);
+
+    @media (min-width: $breakpoint-full) {
+      padding: ((48px - $icon-size-full) / 2);
+    }
   }
 
   svg {
-    $size: rem($ratio);
-
     display: block;
-    width: $size;
-    height: $size;
+    width: $icon-size;
+    height: $icon-size;
+
+    @media (min-width: $breakpoint-full) {
+      width: $icon-size-full;
+      height: $icon-size-full;
+    }
   }
 
   path {
