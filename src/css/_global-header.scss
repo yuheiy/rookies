@@ -9,7 +9,7 @@
   padding-left: $width-gap;
 
   @media print {
-    display: none;
+    margin-bottom: $margin-large;
   }
 
   &__logo {
@@ -25,6 +25,10 @@
   &__brand {
     margin-left: $margin;
     font-size: rem($ratio-text-small);
+
+    @media print {
+      display: none;
+    }
   }
 
   &__brand a {

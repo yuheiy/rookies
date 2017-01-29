@@ -64,6 +64,13 @@
     }
   }
 
+  &__name::before {
+    @media print {
+      content: "著者：";
+      font-weight: normal;
+    }
+  }
+
   &__description {
     margin: 0;
     font-size: rem($ratio-text-small);

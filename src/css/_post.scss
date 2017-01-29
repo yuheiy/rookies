@@ -12,6 +12,10 @@
     justify-content: flex-end;
     align-items: center;
     font-size: rem($ratio-text-small);
+
+    @media print {
+      justify-content: flex-start;
+    }
   }
 
   &__avatar {
@@ -34,12 +38,15 @@
 
   &__author {
     flex: auto;
-    margin: 0;
+    margin: 0 $margin 0 0;
   }
 
   &__date {
-    margin-left: $margin;
     color: $color-gray;
+
+    @media print {
+      color: inherit;
+    }
   }
 
   &__heading {

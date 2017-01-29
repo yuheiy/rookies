@@ -18,6 +18,11 @@ body {
   color: $color-black;
   background-color: $color-white;
 
+  @media print {
+    color: #000;
+    background-color: #fff;
+  }
+
   &::before {
     content: image("ryden.svg");
     position: fixed;
@@ -115,6 +120,10 @@ main {
 a {
   color: $color-primary;
 
+  @media print {
+    color: inherit;
+  }
+
   &:hover,
   &:active,
   &:focus {
@@ -127,7 +136,8 @@ code {
   font-family: $font-stack-monospace;
 }
 
-img {
+img,
+video {
   max-width: 100%;
   height: auto;
 }
@@ -140,6 +150,16 @@ th,
 td {
   padding: .5em 1em;
   border-bottom: 1px solid $color-gray;
+}
+
+blockquote {
+  margin: 0 0 $margin $indent;
+  font-style: italic;
+
+  + figcaption {
+    margin-left: $indent;
+    font-style: italic;
+  }
 }
 
 svg:not(:root) {
