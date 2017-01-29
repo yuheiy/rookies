@@ -51,6 +51,11 @@
 
   &__heading {
     margin: $margin 0;
+
+    @media print {
+      margin-top: $margin-small;
+      margin-bottom: $margin-small;
+    }
   }
 
   &__content {
@@ -104,7 +109,14 @@
       }
 
       @media (min-width: ($breakpoint-full + ($margin * 2))) {
-        margin-left: (- $margin);
+        min-width: calc((100vw - 100%) / 2);
+        margin-left: calc((100vw - 100%) / -2 + #{$margin});
+        text-align: right;
+      }
+
+      @media (min-width: (($breakpoint-full - $margin) * 2 - $width-gap)) {
+        margin-left: calc(-50% + #{$margin});
+        min-width: 50%;
       }
     }
 
@@ -118,7 +130,13 @@
       }
 
       @media (min-width: ($breakpoint-full + ($margin * 2))) {
-        margin-right: (- $margin);
+        min-width: calc((100vw - 100%) / 2);
+        margin-right: calc((100vw - 100%) / -2 + #{$margin});
+      }
+
+      @media (min-width: (($breakpoint-full - $margin) * 2 - $width-gap)) {
+        margin-right: calc(-50% + #{$margin});
+        min-width: 50%;
       }
     }
 
