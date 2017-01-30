@@ -25,6 +25,7 @@ $indent: $margin;
 
 $width-content: 40rem;
 $width-gap: ($margin / 2);
+$width-scrollbar: 2rem;
 
 $breakpoint-content: ($width-content + ($width-gap * 2));
 $breakpoint-full: ($breakpoint-content * $ratio-text-root-full);

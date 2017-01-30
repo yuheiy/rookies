@@ -86,7 +86,7 @@
       text-align: center;
 
       @media (min-width: $breakpoint-content) {
-        margin: $margin-large calc((100vw - #{$width-content}) / 2 * -1);
+        margin: $margin-large calc((100vw - #{$width-scrollbar} - #{$width-content}) / 2 * -1);
       }
 
       @media (min-width: ($breakpoint-full + ($margin * 2))) {
@@ -105,12 +105,12 @@
       margin: 0 $margin $margin-small (- $width-gap);
 
       @media (min-width: $breakpoint-content) {
-        margin-left: calc((100vw - #{$width-content}) / 2 * -1);
+        margin-left: calc((100vw - #{$width-scrollbar} - #{$width-content}) / 2 * -1);
       }
 
       @media (min-width: ($breakpoint-full + ($margin * 2))) {
-        min-width: calc((100vw - 100%) / 2);
-        margin-left: calc((100vw - 100%) / -2 + #{$margin});
+        min-width: calc((100vw - #{$width-scrollbar} - 100%) / 2);
+        margin-left: calc((100vw - #{$width-scrollbar} - 100%) / -2 + #{$margin});
         text-align: right;
       }
 
@@ -126,12 +126,12 @@
       margin: 0 (- $width-gap) $margin-small $margin;
 
       @media (min-width: $breakpoint-content) {
-        margin-right: calc((100vw - #{$width-content}) / 2 * -1);
+        margin-right: calc((100vw - #{$width-scrollbar} - #{$width-content}) / 2 * -1);
       }
 
       @media (min-width: ($breakpoint-full + ($margin * 2))) {
-        min-width: calc((100vw - 100%) / 2);
-        margin-right: calc((100vw - 100%) / -2 + #{$margin});
+        min-width: calc((100vw - #{$width-scrollbar} - 100%) / 2);
+        margin-right: calc((100vw - #{$width-scrollbar} - 100%) / -2 + #{$margin});
       }
 
       @media (min-width: (($breakpoint-full - $margin) * 2 - $width-gap)) {
@@ -149,7 +149,7 @@
       margin: $margin-large (- $width-gap);
 
       @media (min-width: $breakpoint-content) {
-        $m: calc((100vw - #{$width-content}) / 2 * -1);
+        $m: calc((100vw - #{$width-scrollbar} - #{$width-content}) / 2 * -1);
 
         margin-right: $m;
         margin-left: $m;

@@ -81,8 +81,8 @@ html:root pre {
   }
 
   @media (min-width: $breakpoint-content) {
-    $m: calc((100vw - #{$width-content}) / 2 * -1);
-    $p: calc((100vw - #{$width-content}) / 2);
+    $m: calc((100vw - #{$width-scrollbar} - #{$width-content}) / 2 * -1);
+    $p: calc((100vw - #{$width-scrollbar} - #{$width-content}) / 2);
 
     margin-right: $m;
     margin-left: $m;
