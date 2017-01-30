@@ -83,7 +83,7 @@ author: yuhei
 
 実際にこれに基づいてデザインすれば、理想的なレスポンシブデザインを実現することができるはずです。ただ、これは[インブラウザデザイン](http://css.studiomohawk.com/in-browser-design/2011/04/16/designing_in_browser/)の上で成り立つことが前提のワークフローであり、デザイナーのスキルにばらつきがある中で採用するのはかなりハードルが高いでしょう。
 
-<figure class="cover">![片肘をついて寝転ぶレスポンシブくん](/img/posts/right-understanding-of-responsive-web-design/responsive-kun-2.png)</figure>
+<figure class="large">![片肘をついて寝転ぶレスポンシブくん](/img/posts/right-understanding-of-responsive-web-design/responsive-kun-2.png)</figure>
 
 ---
 
