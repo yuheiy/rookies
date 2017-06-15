@@ -1,0 +1,10 @@
+.article-body {
+  margin-bottom: $spacing;
+  font-family: $font-stack-sans-serif;
+}
+
+.article-body::before {
+  content: "";
+  display: block;
+  clear: both;
+}

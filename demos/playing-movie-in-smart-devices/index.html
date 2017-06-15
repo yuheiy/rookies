@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>スマートデバイスの動画再生周りの挙動</title>
+  </head>
+
+  <body>
+    <h1>スマートデバイスの動画再生周りの挙動</h1>
+
+    <section>
+      <h1>video要素による埋め込み</h1>
+      <video id="video-element" controls width="640" height="390">
+        <source src="sample.mp4" type="video/mp4">
+      </video>
+      <p><button id="video-play">Play</button></p>
+    </section>
+    <hr>
+
+    <section>
+      <h1>Youtube IFrame Playerによる埋め込み</h1>
+      <div id="youtube-player"></div>
+      <p><button id="youtube-play">Play</button></p>
+    </section>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      (function () {
+        'use strict';
+
+        var video = document.getElementById('video-element');
+        var play = document.getElementById('video-play');
+
+        play.addEventListener('click', function () {
+          video.play();
+        });
+      })();
+
+      (function () {
+        'use strict';
+
+        var player = null;
+        var play = document.getElementById('youtube-play');
+
+        window.onYouTubeIframeAPIReady = function () {
+          player = new YT.Player('youtube-player', {
+            width: '640',
+            height: '390',
+            videoId: 'M7lc1UVf-VE'
+          });
+        };
+
+        play.addEventListener('click', function () {
+          player.playVideo();
+        });
+      })();
+    </script>
+  </body>
+</html>

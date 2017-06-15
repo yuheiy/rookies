@@ -1,0 +1,14 @@
+.article-read-more {
+  font-size: $text-size-sm;
+  color: $color-gray;
+  text-decoration: underline $color-gray-light;
+  text-decoration-skip: ink;
+}
+
+.article-read-more a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../../demos/sprite-image-fit-int-content/src/style.scss"
+	],
+	"sourcesContent": [
+		"body {\n  color: #fff;\n}\n\n$frame-count: 5;\n$seconds-per-frame: 1;\n\n.sprite-container {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: -1;\n  background-image: url(\"sprite.png\");\n  background-repeat: no-repeat;\n  background-size: 100% $frame-count * 100%;\n  animation: sprite #{$frame-count * $seconds-per-frame}s steps($frame-count) infinite;\n}\n\n@keyframes sprite {\n  from {\n    background-position: left top;\n  }\n  to {\n    background-position: left 100% * $frame-count / ($frame-count - 1);\n  }\n}\n\n.preview {\n  border: 5px solid;\n}\n"
+	],
+	"mappings": "AAAA,AAAA,IAAI,CAAC;EACH,KAAK,EAAE,IAAK,GACb;;AAKD,AAAA,iBAAiB,CAAC;EAChB,QAAQ,EAAE,KAAM;EAChB,GAAG,EAAE,CAAE;EACP,KAAK,EAAE,CAAE;EACT,MAAM,EAAE,CAAE;EACV,IAAI,EAAE,CAAE;EACR,OAAO,EAAE,EAAG;EACZ,gBAAgB,EAAE,iBAAG;EACrB,iBAAiB,EAAE,SAAU;EAC7B,eAAe,EAAE,IAAI,CAAC,IAAY;EAClC,SAAS,EAAE,MAAM,CAAC,EAAqC,CAAE,QAAK,CAAe,QAAQ,GACtF;;AAED,UAAU,CAAV,MAAU;EACR,AAAA,IAAI;IACF,mBAAmB,EAAE,QAAS;EAEhC,AAAA,EAAE;IACA,mBAAmB,EAAE,IAAI,CAAC,IAAI;;AAIlC,AAAA,QAAQ,CAAC;EACP,MAAM,EAAE,SAAU,GACnB",
+	"names": []
+}

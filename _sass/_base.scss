@@ -1,0 +1,144 @@
+html {
+  font-family: $font-stack-system-ui;
+  line-height: $line-height;
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: percentage($ratio-text-size-root-lg);
+  }
+}
+
+body {
+  margin: 0;
+  color: $color-black;
+  overflow-wrap: break-word;
+  background-color: $color-white;
+}
+
+h2 {
+  clear: both;
+  margin: $spacing-lg 0 $spacing-xs;
+  font-size: $text-size-xl;
+  line-height: $line-height-sm;
+}
+
+h3 {
+  clear: both;
+  margin: 0 0 $spacing-xs;
+  font-size: $text-size-lg;
+  line-height: $line-height-sm;
+}
+
+h4 {
+  clear: both;
+  margin: 0 0 $spacing-xs;
+  font-size: $text-size;
+  line-height: $line-height-sm;
+}
+
+p {
+  margin: 0 0 $spacing;
+}
+
+hr {
+  clear: both;
+  margin: $spacing-lg 0;
+  color: $color-gray-light;
+  line-height: 1;
+  text-align: center;
+  border: 0;
+}
+
+hr::before {
+  content: "* * *";
+}
+
+pre {
+  clear: both;
+  overflow: auto;
+  margin: 0 0 $spacing;
+  font-size: $text-size-sm;
+  line-height: $line-height-sm;
+
+  @media (min-width: $breakpoint-lg) {
+    overflow: visible;
+    white-space: pre-wrap;
+  }
+}
+
+blockquote {
+  clear: both;
+  margin: 0 0 $spacing $spacing;
+}
+
+figure blockquote + figcaption {
+  margin-left: $spacing;
+}
+
+figure {
+  margin: 0 0 $spacing;
+}
+
+ol,
+ul {
+  clear: both;
+  margin: 0 0 $spacing;
+  padding-left: $spacing;
+}
+
+ol ol
+ol ul
+ul ol
+ul ul {
+  margin-bottom: 0;
+}
+
+table {
+  clear: both;
+  margin: 0 0 $spacing;
+  line-height: $line-height-sm;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: $spacing-xs $spacing-sm;
+  border-bottom: 1px solid $color-gray-light;
+}
+
+a {
+  color: $color-blue;
+  text-decoration-color: $color-blue-light;
+  text-decoration-skip: ink;
+}
+
+code {
+  font-family: $font-stack-monospace;
+}
+
+i,
+cite,
+em,
+address,
+dfn {
+  font-style: inherit;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+svg:not(:root) {
+  fill: currentColor;
+  overflow: hidden;
+}

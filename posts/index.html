@@ -1,0 +1,20 @@
+---
+layout: default
+title: 記事一覧
+---
+
+<main class="content">
+  {% for post in site.posts %}
+    {% assign author = site.data.authors[post.author] %}
+    <section class="article">
+      <h2 class="article-heading">{{ post.title | escape }}</h2>
+      <footer class="article-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: site.date_format }}</time>
+        {% if author %}
+          <span>{{ author.name }}</span>
+        {% endif %}
+      </footer>
+      <div class="article-read-more"><a href="{{ post.url | relative_url }}" aria-label="記事を読む"></a></div>
+    </section>
+  {% endfor %}
+</main>

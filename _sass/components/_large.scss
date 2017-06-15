@@ -1,0 +1,12 @@
+.large {
+  clear: both;
+  margin: 0 ($spacing-sm * -1) $spacing;
+}
+
+.large img {
+  width: 100%;
+}
+
+.large figcaption {
+  margin: 0 $spacing-sm;
+}

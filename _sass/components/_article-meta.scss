@@ -1,0 +1,11 @@
+.article-meta {
+  display: flex;
+  margin-bottom: $spacing;
+  font-size: $text-size-sm;
+  color: $color-gray;
+  line-height: $line-height-sm;
+}
+
+.article-meta > *:not(:last-child) {
+  margin-right: $spacing-xs;
+}

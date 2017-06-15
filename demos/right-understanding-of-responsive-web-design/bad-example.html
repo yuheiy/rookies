@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>レスポンシブデザインのダメな例</title>
+    <style>
+      :root {
+        --color-gray-50: #fafafa;
+        --color-gray-100: #f5f5f5;
+        --color-gray-200: #eee;
+        --color-gray-300: #e0e0e0;
+        --color-gray-400: #bdbdbd;
+        --color-gray-500: #949494;
+        --color-gray-600: #757575;
+        --color-gray-700: #616161;
+        --color-gray-800: #424242;
+        --color-gray-900: #212121;
+      }
+
+      @media (max-width: 600px) {
+        :root {
+          font-size: 4vw;
+        }
+      }
+
+      body {
+        margin: 0;
+        color: var(--color-gray-900);
+        background-color: var(--color-gray-50);
+      }
+
+      .container {
+        width: 960px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          width: 95%;
+        }
+      }
+
+      .global-header {
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 600px) {
+        .global-header__heading {
+          font-size: 1.5em;
+        }
+      }
+
+      .global-header__site-nav {}
+
+      @media (max-width: 600px) {
+        .global-header__site-nav {
+          display: none;
+        }
+      }
+
+      .global-header__site-nav ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background-color: var(--color-gray-300);
+      }
+
+      .global-header__site-nav li {
+        flex: auto;
+        text-align: center;
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 4rem;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        background-color: var(--color-gray-300);
+      }
+
+      .section {
+        margin-bottom: 4rem;
+      }
+
+      .section__heading {
+        padding-left: 8px;
+        border-style: solid;
+        border-width: 0 0 2px 8px;
+        border-color: var(--color-gray-600);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="global-header">
+        <h1 class="global-header__heading">レスポンシブデザインのダメな例</h1>
+        <nav class="global-header__site-nav">
+          <ul>
+            <li>
+              <a href="">事業内容</a>
+            </li>
+            <li>
+              <a href="">会社案内</a>
+            </li>
+            <li>
+              <a href="">IR情報</a>
+            </li>
+            <li>
+              <a href="">採用情報</a>
+            </li>
+            <li>
+              <a href="">お問い合わせ</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <div class="hero">
+          <p>ウィンドウをリサイズして確認してください</p>
+        </div>
+
+        <section class="section">
+          <h2 class="section__heading">新着情報</h2>
+          <ul>
+            <li>中途採用社員を募集しています</li>
+            <li>株式会社雷電設立しました</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section__heading">このページはサンプルです</h2>
+          <p>このページはレスポンシブデザインのダメな例です。</p>
+          <p><a href="/rookies/posts/right-understanding-of-responsive-web-design.html">参照元はこの記事です。</a></p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

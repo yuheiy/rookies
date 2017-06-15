@@ -1,0 +1,24 @@
+.global-footer {
+  display: flex;
+  justify-content: center;
+  max-width: $width-content;
+  margin: $spacing-lg auto $spacing;
+  padding-right: $spacing-sm;
+  padding-left: $spacing-sm;
+}
+
+.global-footer address {
+  order: -1;
+  margin: 0;
+}
+
+.global-footer ul {
+  display: flex;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.global-footer ul li {
+  margin-left: $spacing-sm;
+}

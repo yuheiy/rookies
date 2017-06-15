@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+{% assign author = site.data.authors[page.author] %}
+<main class="content">
+  <article class="article">
+    <h1 class="article-heading">{{ page.title | escape }}</h1>
+
+    <footer class="article-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: site.date_format }}</time>
+      {% if author %}
+        <span>{{ author.name }}</span>
+      {% endif %}
+    </footer>
+
+    <div class="article-body">{{ content }}</div>
+
+    {% if author %}
+      <aside class="article-author">
+        <div class="article-author__image">
+          <img src="{{ "/assets/images/author/" | relative_url }}{{ author.image }}" alt="">
+        </div>
+        <h2 class="article-author__name">{{ author.name }}</h2>
+        <p class="article-author__title">{{ author.title }}</p>
+        <p class="article-author__description">{{ author.description }}</p>
+      </aside>
+    {% endif %}
+  </article>
+</main>

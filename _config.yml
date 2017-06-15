@@ -1,0 +1,24 @@
+# Site settings
+lang: ja_JP
+title: ライデンの新人ブログ
+email: ""
+description: 株式会社ライデンの新人社員による、日常の日々を綴るブログです。
+baseurl: /rookies
+url: "https://ryden-inc.github.io"
+permalink: /posts/:title.html
+date_format: "%Y年%m月%d日"
+
+# Build settings
+markdown: kramdown
+excerpt_separator: <!-- more -->
+sass:
+  style: compressed
+gems:
+  - jekyll-feed
+  - jekyll-sitemap
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+timezone: Asia/Tokyo
+repository: ryden-inc/rookies

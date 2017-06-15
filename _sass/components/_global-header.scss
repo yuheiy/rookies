@@ -1,0 +1,27 @@
+.global-header {
+  display: flex;
+  justify-content: space-between;
+  max-width: $width-content;
+  margin: $spacing auto;
+  padding-right: $spacing-sm;
+  padding-left: $spacing-sm;
+}
+
+.global-header h1 {
+  margin: 0;
+  font-size: $text-size;
+}
+
+.global-header h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.global-header address {
+  color: $color-gray;
+}
+
+.global-header address a {
+  color: inherit;
+  text-decoration-color: $color-gray-light;
+}

@@ -1,0 +1,9 @@
+.drop-right {
+  float: right;
+  max-width: 50%;
+  margin: ((($text-size * $line-height) - $text-size) / 2) ($spacing-xs * -1) ($text-size * $line-height / 2) $spacing;
+}
+
+.drop-right:last-child {
+  margin-bottom: 0;
+}
