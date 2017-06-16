@@ -138,7 +138,10 @@ video {
   height: auto;
 }
 
-svg:not(:root) {
+svg {
   fill: currentColor;
+}
+
+svg:not(:root) {
   overflow: hidden;
 }

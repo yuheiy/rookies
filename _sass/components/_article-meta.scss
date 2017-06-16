@@ -6,6 +6,6 @@
   line-height: $line-height-sm;
 }
 
-.article-meta > *:not(:last-child) {
+.article-meta > :not(:last-child) {
   margin-right: $spacing-xs;
 }
