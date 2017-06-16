@@ -22,3 +22,13 @@ exclude:
   - Gemfile.lock
 timezone: Asia/Tokyo
 repository: ryden-inc/rookies
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  ignore:
+    envs: []
+  blanklines: false
+  profile: false
+  startings: all
