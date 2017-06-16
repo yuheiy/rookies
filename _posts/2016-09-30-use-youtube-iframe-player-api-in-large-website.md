@@ -2,6 +2,7 @@
 title: 複数の動画を埋め込む場合におけるYouTube IFrame Player APIの辛みを回避する
 author: yuhei
 ---
+
 実務でYouTube IFrame Player APIを利用することが多いのですが、ライブラリの設計上の問題で使うのが辛く感じます。
 
 <!-- more -->

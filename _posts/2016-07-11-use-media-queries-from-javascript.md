@@ -2,6 +2,7 @@
 title: JavaScriptからメディアクエリを利用する
 author: yuhei
 ---
+
 CSSでレスポンシブデザインの実装などに利用されるメディアクエリは、JavaScriptからも利用することができます。
 
 <!-- more -->

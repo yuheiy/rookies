@@ -2,6 +2,7 @@
 title: package.jsonに環境変数を定義する
 author: yuhei
 ---
+
 npm run-scriptにタスクを追加していくとき、タスク間で共通の変数を定義したいということがあります。  
 そういう場合は、`package.json`の`config`フィールドに記述することで実現できます。
 

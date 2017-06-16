@@ -3,6 +3,7 @@ title: スプライトアニメーションをコンテンツの背景にフィ�
 author: yuhei
 image: sprite-image-fit-in-content/background-position.png
 ---
+
 CSSでスプライトアニメーションをコンテンツの背景にフィットさせる方法です。
 
 <!-- more -->

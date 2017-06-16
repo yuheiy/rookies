@@ -31,6 +31,7 @@ bundle exec jekyll serve
     title: 記事のタイトル
     author: yuhei
     ---
+
     記事の前書き（トップページに表示される）
 
     <!-- more -->

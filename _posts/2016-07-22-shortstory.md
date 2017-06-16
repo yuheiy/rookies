@@ -2,6 +2,7 @@
 title: 即興小説
 author: maika
 ---
+
 7月が、もう半分以上封を<span style="color: maroon;">開けて</span>ゆき、  
 すっかり夏、夜もすぐに<span style="color: maroon;">明けて</span>ゆく。   
 この季節は<span style="color: maroon;">飽き</span>がこないが、  
