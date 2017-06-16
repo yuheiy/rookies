@@ -1,7 +1,8 @@
 .article-read-more {
   font-size: $text-size-sm;
   color: $color-gray;
-  text-decoration: underline $color-gray-light;
+  text-decoration: underline;
+  text-decoration-color: $color-gray-light;
   text-decoration-skip: ink;
 }
 
