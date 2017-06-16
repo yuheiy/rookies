@@ -6,6 +6,7 @@
   padding-top: ((($text-size * $line-height) - $text-size) / 2);
 
   @media (min-width: $breakpoint-md) {
+    grid-template-rows: auto auto 1fr;
     grid-column-gap: $spacing;
   }
 }
