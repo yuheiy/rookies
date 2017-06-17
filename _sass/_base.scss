@@ -67,15 +67,11 @@ pre {
 
 blockquote {
   clear: both;
-  margin: 0 0 $spacing $spacing;
-}
-
-figure blockquote + figcaption {
-  margin-left: $spacing;
+  margin: 0 0 $spacing;
 }
 
 figure {
-  margin: 0 0 $spacing;
+  margin: 0 0 $spacing $spacing;
 }
 
 ol,
