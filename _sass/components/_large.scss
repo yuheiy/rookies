@@ -8,5 +8,7 @@
 }
 
 .large figcaption {
-  margin: 0 $spacing-sm;
+  margin: $spacing-xs $spacing-sm 0;
+  font-size: $text-size-sm;
+  line-height: $line-height-sm;
 }

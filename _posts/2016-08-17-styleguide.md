@@ -70,13 +70,15 @@ author: yuhei
 
 <figure class="large">
   <img src="{{ site.baseurl }}/assets/images/post/styleguide/building.jpg" alt="ニューヨークの高層ビル">
+  <figcaption>コンテンツ幅より小さい画像の場合</figcaption>
 </figure>
 
-画像を少し大きく表示します。コンテンツ幅より小さい画像の場合は、拡大して表示されます。
+画像を少し大きく表示します。コンテンツ幅より小さい画像の場合は、拡大して表示されます。キャプションの利用は任意です。
 
 ```markdown
 {% raw %}<figure class="large">
   <img src="{{ site.baseurl }}/assets/images/post/post-slug-name/image-file-name.ext" alt="代替テキスト">
+  <figcaption>補足情報</figcaption>
 </figure>{% endraw %}
 ```
 
