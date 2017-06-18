@@ -74,6 +74,12 @@ figure {
   margin: 0 0 $spacing $spacing;
 }
 
+figcaption {
+  font-size: $text-size-sm;
+  line-height: $line-height-sm;
+  color: $color-gray;
+}
+
 ol,
 ul {
   clear: both;
