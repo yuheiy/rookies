@@ -11,8 +11,8 @@ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 
 source ~/.bash_profile
 
-rbenv install 2.4.1
-rbenv global 2.4.1
+rbenv install 2.3.1
+rbenv global 2.3.1
 
 gem install bundler
 ```
