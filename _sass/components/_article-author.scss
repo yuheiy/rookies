@@ -41,12 +41,13 @@
 .article-author__title {
   order: -1;
   align-self: flex-end;
-  margin: 0;
+  margin: ((($text-size * $line-height-sm) - ($text-size-sm * $line-height-sm)) / 2 * -1) 0 0;
   font-size: $text-size-sm;
   line-height: $line-height-sm;
 
   @media (min-width: $breakpoint-md) {
     align-self: auto;
+    margin-top: 0;
   }
 }
 
