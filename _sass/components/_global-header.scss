@@ -10,6 +10,7 @@
 .global-header h1 {
   margin: 0;
   font-size: $text-size;
+  font-feature-settings: "palt" 1;
 }
 
 .global-header h1 a {

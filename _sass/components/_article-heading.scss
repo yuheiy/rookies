@@ -2,5 +2,6 @@
   margin: $spacing-xl 0 $spacing-xs;
   font-family: $font-stack-sans-serif;
   font-size: $text-size-xxl;
+  font-feature-settings: "palt" 1;
   line-height: $line-height-sm;
 }
