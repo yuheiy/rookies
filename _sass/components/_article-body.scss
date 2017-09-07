@@ -1,10 +1,17 @@
 .article-body {
   margin-bottom: $spacing;
   font-family: $font-stack-sans-serif;
+  font-kerning: none;
 }
 
 .article-body::after {
   content: "";
   display: block;
   clear: both;
+}
+
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+  font-kerning: auto;
 }
