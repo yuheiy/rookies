@@ -1,5 +1,6 @@
 html {
   font-family: $font-stack-system-ui;
+  font-weight: 300;
   line-height: $line-height;
 
   @media (min-width: $breakpoint-lg) {
@@ -14,12 +15,7 @@ body {
   background-color: $color-white;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1 {
   font-weight: 600;
 }
 
@@ -27,6 +23,7 @@ h2 {
   clear: both;
   margin: $spacing-lg 0 $spacing-xs;
   font-size: $text-size-xl;
+  font-weight: 600;
   line-height: $line-height-sm;
 }
 
@@ -34,6 +31,7 @@ h3 {
   clear: both;
   margin: 0 0 $spacing-xs;
   font-size: $text-size-lg;
+  font-weight: 600;
   line-height: $line-height-sm;
 }
 
@@ -41,7 +39,16 @@ h4 {
   clear: both;
   margin: 0 0 $spacing-xs;
   font-size: $text-size;
+  font-weight: 600;
   line-height: $line-height-sm;
+}
+
+h5 {
+  font-weight: 600;
+}
+
+h6 {
+  font-weight: 600;
 }
 
 p {
@@ -116,10 +123,19 @@ td {
   border-bottom: 1px solid $color-gray-light;
 }
 
+th {
+  font-weight: 600;
+}
+
 a {
   color: $color-blue;
   text-decoration-color: $color-blue-light;
   text-decoration-skip: ink;
+}
+
+b,
+strong {
+  font-weight: 600;
 }
 
 code {
