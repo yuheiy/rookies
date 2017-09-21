@@ -6,15 +6,17 @@ layout: default
   {% for post in site.posts limit:5 %}
     {% assign author = site.data.authors[post.author] %}
     <section class="article">
-      <h2 class="article-heading">{{ post.title | escape }}</h2>
-      <footer class="article-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: site.date_format }}</time>
-        {% if author %}
-          <span>{{ author.name }}</span>
-        {% endif %}
-      </footer>
-      <div class="article-body">{{ post.excerpt }}</div>
-      <div class="article-read-more"><a href="{{ post.url | relative_url }}" aria-label="続きを読む"></a><span aria-hidden="true">続きを読む</span></div>
+      <a class="article-permalink" href="{{ post.url | relative_url }}">
+        <h2 class="article-heading">{{ post.title | escape }}</h2>
+        <footer class="article-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: site.date_format }}</time>
+          {% if author %}
+            <span>{{ author.name }}</span>
+          {% endif %}
+        </footer>
+        <div class="article-body">{{ post.excerpt }}</div>
+        <div class="article-read-more" aria-hidden="true">続きを読む</div>
+      </a>
     </section>
   {% endfor %}
 

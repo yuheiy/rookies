@@ -142,18 +142,6 @@ code {
   font-family: $font-stack-monospace;
 }
 
-i,
-cite,
-em,
-address,
-dfn {
-  &:lang(zh),
-  &:lang(ja),
-  &:lang(ko) {
-    font-style: normal;
-  }
-}
-
 audio,
 canvas,
 iframe,
@@ -175,4 +163,8 @@ svg {
 
 svg:not(:root) {
   overflow: hidden;
+}
+
+:lang(ja) {
+  font-style: normal;
 }
